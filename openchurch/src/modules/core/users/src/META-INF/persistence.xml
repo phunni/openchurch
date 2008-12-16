@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+    <persistence-unit name="openchurch_users">
+        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <non-jta-data-source>java:comp/env/jdbc/openchurch</non-jta-data-source>
+        <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
+        <properties>
+        <property name="toplink.logging.level" value="FINE"/>
+    </properties>
+    </persistence-unit>
+</persistence>
