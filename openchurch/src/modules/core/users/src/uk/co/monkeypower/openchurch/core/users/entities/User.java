@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
+
 @Entity
 @Table(name="openchurch_users")
 public class User {
@@ -13,6 +15,7 @@ public class User {
     private String username;
     private String preferredNames;
     private String surname;
+    private String emailAddress;
     
     public int getId() {
         return id;
@@ -37,6 +40,20 @@ public class User {
     }
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+    public void setEmailAddress(String emailAddress) throws UserAttributeValidationException {
+	if (emailAddress.contains("mailinator")) {
+	    throw new UserAttributeValidationException("Tried to use a cheeky spam trap...");
+	}
+	int atSymbol = emailAddress.indexOf("@");
+	int dotCharacter = emailAddress.lastIndexOf(".");
+	if (atSymbol == -1 || dotCharacter == -1 || dotCharacter < atSymbol){
+	    throw new UserAttributeValidationException("Invalid email address provided...");
+	}
+        this.emailAddress = emailAddress;
     }
     
     
