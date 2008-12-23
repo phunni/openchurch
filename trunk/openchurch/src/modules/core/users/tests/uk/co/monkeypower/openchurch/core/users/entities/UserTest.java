@@ -1,16 +1,20 @@
 package uk.co.monkeypower.openchurch.core.users.entities;
 
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 import javax.sql.DataSource;
 
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
 
 
 
@@ -33,13 +37,43 @@ public class UserTest {
     }
     
     @Test
-    public void createUser(){
+    public void createUser() throws Exception{
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
 	User user = new User();
 	user.setId(0);
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
+	user.setEmailAddress("test@test.co.uk");
+	manager.getTransaction().begin();
+	manager.persist(user);
+	manager.getTransaction().commit();
+    }
+    
+    @Test(expected=RollbackException.class)
+    public void createNonUniqueUser() throws Exception {
+	createUser();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	User user = new User();
+	user.setId(1);
+	user.setUsername("test-user");
+	user.setPreferredNames("test-name");
+	user.setSurname("test-surname");
+	user.setEmailAddress("test@test.co.uk");
+	manager.getTransaction().begin();
+	manager.persist(user);
+	manager.getTransaction().commit();
+    }
+    
+    @Test(expected=UserAttributeValidationException.class)
+    public void createUserDodgyEmail() throws Exception {
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	User user = new User();
+	user.setId(1);
+	user.setUsername("test-user");
+	user.setPreferredNames("test-name");
+	user.setSurname("test-surname");
+	user.setEmailAddress("dodgyEmail...");
 	manager.getTransaction().begin();
 	manager.persist(user);
 	manager.getTransaction().commit();
