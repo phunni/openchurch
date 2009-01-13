@@ -40,7 +40,6 @@ public class UserTest {
     public void createUser() throws Exception{
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
 	User user = new User();
-	user.setId(0);
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
@@ -55,7 +54,6 @@ public class UserTest {
 	createUser();
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
 	User user = new User();
-	user.setId(1);
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
@@ -69,7 +67,6 @@ public class UserTest {
     public void createUserDodgyEmail() throws Exception {
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
 	User user = new User();
-	user.setId(1);
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
