@@ -24,6 +24,9 @@ public class User implements Serializable {
     private String preferredNames;
     private String surname;
     private String emailAddress;
+    private String homeTelNumber;
+    private String workTelNumber;
+    private String mobileTelNumber;
     
     public long getId() {
         return id;
@@ -62,6 +65,25 @@ public class User implements Serializable {
 	    throw new UserAttributeValidationException("Invalid email address provided...");
 	}
         this.emailAddress = emailAddress;
+    }
+    
+    public String getHomeTelNumber() {
+        return homeTelNumber;
+    }
+    public void setHomeTelNumber(String homeTelNumber) {
+        this.homeTelNumber = homeTelNumber;
+    }
+    public String getWorkTelNumber() {
+        return workTelNumber;
+    }
+    public void setWorkTelNumber(String workTelNumber) {
+        this.workTelNumber = workTelNumber;
+    }
+    public String getMobileTelNumber() {
+        return mobileTelNumber;
+    }
+    public void setMobileTelNumber(String mobileTelNumber) {
+        this.mobileTelNumber = mobileTelNumber;
     }
     
     
