@@ -1,8 +1,5 @@
 package uk.co.monkeypower.openchurch.core.users.entities;
 
-
-import java.util.Vector;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -16,13 +13,10 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
 
-
-
-public class UserTest {
+public class AddressTest {
     
-    private static DataSource dataSource;
+private static DataSource dataSource;
     
     @BeforeClass
     public static void setUpJNDI() throws NamingException {	
@@ -39,73 +33,48 @@ public class UserTest {
     }
     
     @Test
-    public void createUser() throws Exception{
+    public void createAddress() throws Exception {
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	User user = new User();
-	user.setUsername("test-user");
-	user.setPreferredNames("test-name");
-	user.setSurname("test-surname");
-	user.setEmailAddress("test@test.co.uk");
+	Address address = new Address();
+	address.setFirstLine("test");
+	address.setTown("test");
+	address.setCounty("test");
+	address.setPostCode("AB12 3CD");
 	manager.getTransaction().begin();
-	manager.persist(user);
+	manager.persist(address);
 	manager.getTransaction().commit();
     }
     
     @Test(expected=RollbackException.class)
-    public void createNonUniqueUser() throws Exception {
-	createUser();
+    public void createAddressWithNullDAta(){
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	User user = new User();
-	user.setUsername("test-user");
-	user.setPreferredNames("test-name");
-	user.setSurname("test-surname");
-	user.setEmailAddress("test@test.co.uk");
+	Address address = new Address();
+	address.setFirstLine("test");
 	manager.getTransaction().begin();
-	manager.persist(user);
+	manager.persist(address);
 	manager.getTransaction().commit();
     }
     
-    @Test(expected=UserAttributeValidationException.class)
-    public void createUserDodgyEmail() throws Exception {
+    @Test(expected=AddressAttributeValidationException.class)
+    public void createAddressWithInvalidPostCode() throws Exception{
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	User user = new User();
-	user.setUsername("test-user");
-	user.setPreferredNames("test-name");
-	user.setSurname("test-surname");
-	user.setEmailAddress("dodgyEmail...");
-	manager.getTransaction().begin();
-	manager.persist(user);
-	manager.getTransaction().commit();
-    }
-    
-    @Test
-    public void createUserWithAnAddress() throws Exception {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	User user = new User();
-	user.setUsername("test-user");
-	user.setPreferredNames("test-name");
-	user.setSurname("test-surname");
-	user.setEmailAddress("test@test.co.uk");
 	Address address = new Address();
 	address.setFirstLine("test");
 	address.setTown("test");
-	address.setCounty("address");
-	address.setPostCode("AB12 3CD");
-	Vector<Address> addresses = new Vector<Address>();
-	addresses.add(address);
-	user.setAddresses(addresses);
+	address.setCounty("test");
+	address.setPostCode("test");
 	manager.getTransaction().begin();
-	manager.persist(user);
+	manager.persist(address);
 	manager.getTransaction().commit();
     }
     
     @After
-    public void cleanUp(){
+    public void cleanUp() {
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	Query deleteQuery = manager.createQuery("delete from User u where u.username = 'test-user'");
+	Query deleteQuery = manager.createQuery("delete from Address a where a.firstLine = 'test'");
 	manager.getTransaction().begin();
 	deleteQuery.executeUpdate();
 	manager.getTransaction().commit();
     }
-
+    
 }

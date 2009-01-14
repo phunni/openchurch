@@ -1,10 +1,15 @@
 package uk.co.monkeypower.openchurch.core.users.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -27,6 +32,9 @@ public class User implements Serializable {
     private String homeTelNumber;
     private String workTelNumber;
     private String mobileTelNumber;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="openchurch_user_addresses", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
+    private List<Address> addresses;
     
     public long getId() {
         return id;
@@ -85,7 +93,13 @@ public class User implements Serializable {
     public void setMobileTelNumber(String mobileTelNumber) {
         this.mobileTelNumber = mobileTelNumber;
     }
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
     
     
-
+    
 }
