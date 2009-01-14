@@ -1,12 +1,14 @@
 package uk.co.monkeypower.openchurch.core.users.entities;
 
 
+import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
@@ -102,10 +104,15 @@ public class UserTest {
     @After
     public void cleanUp(){
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
-	Query deleteQuery = manager.createQuery("delete from User u where u.username = 'test-user'");
+	Query selectForDeletionQuery = manager.createQuery("select u from User u where u.username = 'test-user'");
 	manager.getTransaction().begin();
-	deleteQuery.executeUpdate();
+	List<User> usersToBeDeleted = selectForDeletionQuery.getResultList();
 	manager.getTransaction().commit();
+	for (User currentUser : usersToBeDeleted) {
+	    manager.getTransaction().begin();
+	    manager.remove(currentUser);
+	    manager.getTransaction().commit();
+	}
     }
 
 }
