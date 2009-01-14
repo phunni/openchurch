@@ -6,6 +6,7 @@
         <provider>oracle.toplink.essentials.PersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/jdbc/openchurch</non-jta-data-source>
         <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
+        <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>
         <properties>
         <property name="toplink.logging.level" value="FINE"/>
     </properties>

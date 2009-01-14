@@ -24,3 +24,18 @@ create table openchurch_users (
     workTelNumber varchar(100),
     mobileTelNumber varchar(100)
 )
+
+create table openchurch_addresses (
+    id bigint primary key,
+    firstLine varchar(250) not null,
+    secondLine varchar(250),
+    thirdLine varchar(250),
+    town varchar(250) not null,
+    county varchar(250) not null,
+    postCode varchar(250) not null
+)
+
+create table openchurch_user_addresses (
+    parent bigint not null,
+    child bigint not null
+)

@@ -4,12 +4,12 @@
 	<classpathentry kind="src" path="src/modules/core/users/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/toplink-essentials-agent.jar"/>
-	<classpathentry kind="lib" path="lib/toplink-essentials.jar"/>
 	<classpathentry kind="lib" path="lib/naming-factory-dbcp.jar"/>
 	<classpathentry kind="lib" path="lib/naming-factory.jar"/>
 	<classpathentry kind="lib" path="lib/naming-resources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="lib/jtds-1.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/toplink-essentials-agent.jar"/>
+	<classpathentry kind="lib" path="lib/toplink-essentials.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
