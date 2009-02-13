@@ -12,7 +12,7 @@ create table id_generator (
     id_value bigint not null
 )
 
-insert into id_generator values ('INV_GEN', 0);
+insert into id_generator values ('INV_GEN', 5);
 
 create table openchurch_users (
     id bigint primary key,
@@ -39,3 +39,12 @@ create table openchurch_user_addresses (
     parent bigint not null,
     child bigint not null
 )
+
+create table openchurch_roles (
+    id bigint primary key,
+    title varchar(500) not null unique
+)
+
+insert into openchurch_roles values(0, 'admin');
+insert into openchurch_roles values(1, 'member');
+
