@@ -100,6 +100,26 @@ public class UserTest {
 	manager.getTransaction().commit();
     }
     
+    @Test
+    public void createUserWithRoles() throws Exception {
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	User user = new User();
+	user.setUsername("test-user");
+	user.setPreferredNames("test-name");
+	user.setSurname("test-surname");
+	user.setEmailAddress("test@test.co.uk");
+	Query getRolesByTitle = manager.createNamedQuery("selectRoleBytitle");
+	getRolesByTitle.setParameter(1, "member");
+	Role testRole = (Role) getRolesByTitle.getSingleResult();
+	List <Role> roles = new Vector<Role>();
+	roles.add(testRole);
+	user.setRoles(roles);
+	manager.getTransaction().begin();
+	manager.persist(user);
+	manager.getTransaction().commit();
+	
+    }
+    
     @After
     public void cleanUp(){
 	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();

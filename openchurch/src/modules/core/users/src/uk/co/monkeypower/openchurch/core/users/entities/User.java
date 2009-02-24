@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -35,6 +36,9 @@ public class User implements Serializable {
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="openchurch_user_addresses", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
     private List<Address> addresses;
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    @JoinTable(name="openchurch_user_roles", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
+    private List<Role> roles;
     
     public long getId() {
         return id;
@@ -99,7 +103,12 @@ public class User implements Serializable {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
-    
+    public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
     
     
 }
