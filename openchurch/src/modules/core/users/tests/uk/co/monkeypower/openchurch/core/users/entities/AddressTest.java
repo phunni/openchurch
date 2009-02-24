@@ -22,14 +22,18 @@ private static DataSource dataSource;
     public static void setUpJNDI() throws NamingException {	
 	System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.naming.java.javaURLContextFactory");
 	System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
-	InitialContext initCtx = new InitialContext();
-	initCtx.createSubcontext("java:");
-	initCtx.createSubcontext("java:comp");
-	initCtx.createSubcontext("java:comp/env");
-	initCtx.createSubcontext("java:comp/env/jdbc");
 
 	dataSource = new OpenChurchUtilityDatasourceForTesting();
-	initCtx.bind("java:comp/env/jdbc/openchurch", dataSource);
+	try {
+	    InitialContext initCtx = new InitialContext();
+	    initCtx.createSubcontext("java:");
+	    initCtx.createSubcontext("java:comp");
+	    initCtx.createSubcontext("java:comp/env");
+	    initCtx.createSubcontext("java:comp/env/jdbc");
+	    initCtx.bind("java:comp/env/jdbc/openchurch", dataSource);
+	} catch(NamingException e){
+	    //do nothing...
+	}
     }
     
     @Test
