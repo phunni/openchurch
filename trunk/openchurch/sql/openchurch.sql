@@ -48,3 +48,8 @@ create table openchurch_roles (
 insert into openchurch_roles values(0, 'admin');
 insert into openchurch_roles values(1, 'member');
 
+create table openchurch_user_roles (
+    parent bigint not null,
+    child bigint not null
+)
+

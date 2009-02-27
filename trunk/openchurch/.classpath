@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/modules/core/users/tests"/>
-	<classpathentry kind="src" path="src/modules/core/users/src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/naming-factory-dbcp.jar"/>
-	<classpathentry kind="lib" path="lib/naming-factory.jar"/>
-	<classpathentry kind="lib" path="lib/naming-resources.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
-	<classpathentry kind="lib" path="lib/jtds-1.2.2.jar"/>
-	<classpathentry kind="lib" path="lib/toplink-essentials-agent.jar"/>
-	<classpathentry kind="lib" path="lib/toplink-essentials.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="openchurch-core/src/test/resources"/>
+	<classpathentry kind="src" path="openchurch-core/src/main/java"/>
+	<classpathentry kind="src" path="openchurch-core/src/test/java"/>
+	<classpathentry kind="src" path="openchurch-core/src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
