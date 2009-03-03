@@ -4,6 +4,16 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
     <persistence-unit name="openchurch_users">
         <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/openchurch</jta-data-source>
+        <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
+        <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>
+        <class>uk.co.monkeypower.openchurch.core.users.entities.Role</class>
+        <properties>
+        <property name="toplink.logging.level" value="FINE"/>
+    </properties>
+    </persistence-unit>
+    <persistence-unit name="openchurch_users_test">
+        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/jdbc/openchurch</non-jta-data-source>
         <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>

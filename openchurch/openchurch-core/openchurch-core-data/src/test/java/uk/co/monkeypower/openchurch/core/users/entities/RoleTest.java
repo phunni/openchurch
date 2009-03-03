@@ -46,7 +46,7 @@ public class RoleTest {
     public void createRole() {
 	Role role = new Role();
 	role.setTitle("test");
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	manager.getTransaction().begin();
 	manager.persist(role);
 	manager.getTransaction().commit();
@@ -57,7 +57,7 @@ public class RoleTest {
     
     @Test
     public void searchUsersInRole() throws Exception{
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -78,7 +78,7 @@ public class RoleTest {
     
     @After
     public void cleanUp(){
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Query deleteTestData = manager.createQuery("delete from Role r where r.title = 'test'");
 	manager.getTransaction().begin();
 	int deleted = deleteTestData.executeUpdate();
