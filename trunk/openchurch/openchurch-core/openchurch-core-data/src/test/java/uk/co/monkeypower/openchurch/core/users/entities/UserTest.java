@@ -45,7 +45,7 @@ public class UserTest {
     
     @Test
     public void createUser() throws Exception{
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -59,7 +59,7 @@ public class UserTest {
     @Test(expected=RollbackException.class)
     public void createNonUniqueUser() throws Exception {
 	createUser();
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -72,7 +72,7 @@ public class UserTest {
     
     @Test(expected=UserAttributeValidationException.class)
     public void createUserDodgyEmail() throws Exception {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -85,7 +85,7 @@ public class UserTest {
     
     @Test
     public void createUserWithAnAddress() throws Exception {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -106,7 +106,7 @@ public class UserTest {
     
     @Test
     public void createUserWithRoles() throws Exception {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	User user = new User();
 	user.setUsername("test-user");
 	user.setPreferredNames("test-name");
@@ -126,7 +126,7 @@ public class UserTest {
     
     @After
     public void cleanUp(){
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Query selectForDeletionQuery = manager.createQuery("select u from User u where u.username = 'test-user'");
 	manager.getTransaction().begin();
 	List<User> usersToBeDeleted = selectForDeletionQuery.getResultList();

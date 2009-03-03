@@ -38,7 +38,7 @@ private static DataSource dataSource;
     
     @Test
     public void createAddress() throws Exception {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Address address = new Address();
 	address.setFirstLine("test");
 	address.setTown("test");
@@ -51,7 +51,7 @@ private static DataSource dataSource;
     
     @Test(expected=RollbackException.class)
     public void createAddressWithNullData(){
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Address address = new Address();
 	address.setFirstLine("test");
 	manager.getTransaction().begin();
@@ -61,7 +61,7 @@ private static DataSource dataSource;
     
     @Test(expected=AddressAttributeValidationException.class)
     public void createAddressWithInvalidPostCode() throws Exception{
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Address address = new Address();
 	address.setFirstLine("test");
 	address.setTown("test");
@@ -74,7 +74,7 @@ private static DataSource dataSource;
     
     @After
     public void cleanUp() {
-	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users").createEntityManager();
+	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
 	Query deleteQuery = manager.createQuery("delete from Address a where a.firstLine = 'test'");
 	manager.getTransaction().begin();
 	deleteQuery.executeUpdate();
