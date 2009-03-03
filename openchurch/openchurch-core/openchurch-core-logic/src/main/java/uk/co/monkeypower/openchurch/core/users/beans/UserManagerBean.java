@@ -16,7 +16,7 @@ import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidation
 @Stateful
 public class UserManagerBean implements UserManager {
     
-    @PersistenceContext
+    @PersistenceContext(name="openchurch_users")
     EntityManager entityManager;
 
     public EntityManager getEntityManager() {
