@@ -1,23 +1,26 @@
 package uk.co.monkeypower.openchurch.core.users.beans;
 
-import java.util.List;
-
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import uk.co.monkeypower.openchurch.core.users.beans.exceptions.UserManagementException;
-import uk.co.monkeypower.openchurch.core.users.entities.Address;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import uk.co.monkeypower.openchurch.core.users.entities.Role;
 import uk.co.monkeypower.openchurch.core.users.entities.User;
-import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
+
 
 @Stateful
 public class UserManagerBean implements UserManager {
     
+    private final Log LOG = LogFactory.getLog(UserManagerBean.class);
+    
     @PersistenceContext(name="openchurch_users")
-    EntityManager entityManager;
+    private EntityManager entityManager;
+    
+    private User user;
 
     public EntityManager getEntityManager() {
         return entityManager;
@@ -27,41 +30,60 @@ public class UserManagerBean implements UserManager {
         this.entityManager = entityManager;
     }
 
-    public User createUser(String username, String preferredNames, String surname, String emailAddress,
-	String homeTelNumber, String workTelNumber, String mobileTelNumber, List<Address> addresses, List<Role> roles) throws UserManagementException {
-	User createdUser = new User();
-	createdUser.setUsername(username);
-	createdUser.setPreferredNames(preferredNames);
-	createdUser.setSurname(surname);
-	try {
-	    createdUser.setEmailAddress(emailAddress);
-	} catch(UserAttributeValidationException e){
-	    throw new UserManagementException("Tried to create a user with an invalid email address", e);
+    public void createUser() {
+	if(checkUserNotNull()){
+	    entityManager.persist(user);
+	} else {
+	    LOG.warn("An attempt was made to persist a null user");
 	}
-	createdUser.setHomeTelNumber(homeTelNumber);
-	createdUser.setWorkTelNumber(workTelNumber);
-	createdUser.setMobileTelNumber(mobileTelNumber);
-	createdUser.setAddresses(addresses);
-	createdUser.setRoles(roles);
-	entityManager.persist(createdUser);
-	return createdUser;
     }
 
-    public User editUser(User userToBeEdited) {
-	entityManager.merge(userToBeEdited);
-	return userToBeEdited;
+    public void editUser() {
+	if(checkUserNotNull()){
+	    entityManager.merge(user);
+	} else {
+	    LOG.warn("An attempt was made to modify a null user");
+	}
     }
 
     public User findUser(String username) {
 	Query findUserQuery = entityManager.createQuery("select u from User u where u.username = ?1");
 	findUserQuery.setParameter(1, username);
-	User returnedUser = (User) findUserQuery.getSingleResult();
-	return returnedUser;
+	user = (User) findUserQuery.getSingleResult();
+	return user;
     }
 
-    public User removeUser(User userToBeRemoved) {
-	entityManager.remove(userToBeRemoved);
-	return userToBeRemoved;
+    public void removeUser() {
+	if(checkUserNotNull()){
+	    entityManager.remove(user);
+	} else {
+	    LOG.warn("An attempt was made to remove a null user");
+	}
+    }
+
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+    private boolean checkUserNotNull(){
+	if (user == null){
+	    return false;
+	} else {
+	    return true;
+	}
+    }
+
+    public boolean isAdmin() {
+	for (Role currentRole : user.getRoles()){
+	    if (currentRole.getTitle().equals("admin")){
+		return true;
+	    }
+	}
+	return false;
     }
     
     
