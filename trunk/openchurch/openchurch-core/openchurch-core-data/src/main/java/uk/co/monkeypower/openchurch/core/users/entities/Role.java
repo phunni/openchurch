@@ -20,11 +20,12 @@ public class Role {
     @TableGenerator(name="IdTable", allocationSize=2, table = "id_generator", pkColumnName="id_name", valueColumnName="id_value", pkColumnValue="INV_GEN")
     private long id;
     private String title;
+    @ManyToMany(mappedBy="roles")
+    private List<User> users;
+    
     public long getId() {
         return id;
     }
-    @ManyToMany(mappedBy="roles")
-    public List<User> users;
     public void setId(long id) {
         this.id = id;
     }
@@ -54,5 +55,13 @@ public class Role {
 	}
 	return user;
     }
+    public List<User> getUsers() {
+        return users;
+    }
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+    
+    
 
 }
