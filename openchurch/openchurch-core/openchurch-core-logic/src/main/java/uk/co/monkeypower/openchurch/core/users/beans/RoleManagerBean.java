@@ -11,7 +11,7 @@ import uk.co.monkeypower.openchurch.core.users.entities.Role;
 
 public class RoleManagerBean implements RoleManager {
     
-    @PersistenceContext(name="openchurch_users")
+    @PersistenceContext(unitName="openchurch_users")
     private EntityManager entityManager;
     
     public void createRole(Role roleToBeCreated) {

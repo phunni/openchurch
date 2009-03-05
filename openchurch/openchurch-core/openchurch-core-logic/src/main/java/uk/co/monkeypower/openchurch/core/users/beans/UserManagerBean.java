@@ -17,7 +17,7 @@ public class UserManagerBean implements UserManager {
     
     private final Log LOG = LogFactory.getLog(UserManagerBean.class);
     
-    @PersistenceContext(name="openchurch_users")
+    @PersistenceContext(unitName="openchurch_users")
     private EntityManager entityManager;
     
     private User user;
