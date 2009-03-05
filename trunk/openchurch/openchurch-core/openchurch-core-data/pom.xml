@@ -9,7 +9,7 @@
   <artifactId>openchurch-core-data</artifactId>
   <name>openchurch-core-data</name>
   <version>1.0-SNAPSHOT</version>
-  <url>http://maven.apache.org</url>
+  <url>http://code.google.com/p/openchurch/</url>
   <dependencies>
     <dependency>
       <groupId>net.sourceforge.jtds</groupId>
