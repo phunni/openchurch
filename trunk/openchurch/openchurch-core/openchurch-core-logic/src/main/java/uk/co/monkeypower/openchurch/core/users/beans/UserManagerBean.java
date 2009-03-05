@@ -55,7 +55,7 @@ public class UserManagerBean implements UserManager {
 
     public void removeUser() {
 	if(checkUserNotNull()){
-	    entityManager.remove(user);
+	    entityManager.remove(entityManager.merge(user));
 	} else {
 	    LOG.warn("An attempt was made to remove a null user");
 	}
