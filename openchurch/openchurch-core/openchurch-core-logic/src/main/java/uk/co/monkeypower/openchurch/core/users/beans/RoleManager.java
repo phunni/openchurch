@@ -2,12 +2,11 @@ package uk.co.monkeypower.openchurch.core.users.beans;
 
 import java.util.List;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 import uk.co.monkeypower.openchurch.core.users.entities.Role;
-import uk.co.monkeypower.openchurch.core.users.entities.User;
 
-@Remote
+@Local
 public interface RoleManager {
     
     public void createRole(Role roleToBeCreated);

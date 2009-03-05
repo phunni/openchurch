@@ -60,6 +60,7 @@
              <webModule>
                 <groupId>uk.co.monkeypower.openchurch</groupId>
                 <artifactId>openchurch-core-web</artifactId>
+                <contextRoot>/openchurch</contextRoot>
              </webModule>
              <jarModule>
                 <groupId>uk.co.monkeypower.openchurch</groupId>

@@ -2,6 +2,7 @@ package uk.co.monkeypower.openchurch.core.users.beans;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,6 +10,7 @@ import javax.persistence.Query;
 
 import uk.co.monkeypower.openchurch.core.users.entities.Role;
 
+@Stateless
 public class RoleManagerBean implements RoleManager {
     
     @PersistenceContext(unitName="openchurch_users")

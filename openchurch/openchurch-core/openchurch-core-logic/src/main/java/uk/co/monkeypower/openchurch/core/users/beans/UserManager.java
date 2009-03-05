@@ -1,11 +1,11 @@
 package uk.co.monkeypower.openchurch.core.users.beans;
 
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 import uk.co.monkeypower.openchurch.core.users.entities.User;
 
-@Remote
+@Local
 public interface UserManager {
     
     public void createUser();
