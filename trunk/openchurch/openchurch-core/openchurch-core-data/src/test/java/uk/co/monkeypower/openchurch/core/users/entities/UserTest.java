@@ -51,6 +51,7 @@ public class UserTest {
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
 	user.setEmailAddress("test@test.co.uk");
+	user.setPassword("test-password");
 	manager.getTransaction().begin();
 	manager.persist(user);
 	manager.getTransaction().commit();
@@ -91,6 +92,7 @@ public class UserTest {
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
 	user.setEmailAddress("test@test.co.uk");
+	user.setPassword("test-password");
 	Address address = new Address();
 	address.setFirstLine("test");
 	address.setTown("test");
@@ -112,6 +114,7 @@ public class UserTest {
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
 	user.setEmailAddress("test@test.co.uk");
+	user.setPassword("test-password");
 	Query getRolesByTitle = manager.createNamedQuery("selectRoleBytitle");
 	getRolesByTitle.setParameter(1, "member");
 	Role testRole = (Role) getRolesByTitle.getSingleResult();
