@@ -22,7 +22,8 @@ create table openchurch_users (
     emailAddress varchar(250) not null,
     homeTelNumber varchar(100),
     workTelNumber varchar(100),
-    mobileTelNumber varchar(100)
+    mobileTelNumber varchar(100),
+    password varchar(100) not null
 )
 
 create table openchurch_addresses (

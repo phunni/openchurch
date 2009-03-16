@@ -33,6 +33,7 @@ public class User implements Serializable {
     private String homeTelNumber;
     private String workTelNumber;
     private String mobileTelNumber;
+    private String password;
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="openchurch_user_addresses", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
     private List<Address> addresses;
@@ -96,6 +97,13 @@ public class User implements Serializable {
     }
     public void setMobileTelNumber(String mobileTelNumber) {
         this.mobileTelNumber = mobileTelNumber;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public List<Address> getAddresses() {
         return addresses;
