@@ -63,6 +63,7 @@ public class RoleTest {
 	user.setPreferredNames("test-name");
 	user.setSurname("test-surname");
 	user.setEmailAddress("test@test.co.uk");
+	user.setPassword("test-password");
 	Query getRolesByTitle = manager.createNamedQuery("selectRoleBytitle");
 	getRolesByTitle.setParameter(1, "member");
 	Role testRole = (Role) getRolesByTitle.getSingleResult();
