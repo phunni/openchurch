@@ -32,6 +32,7 @@ public class TestUserSetup extends HttpServlet {
 	User user = new User();
 	user.setUsername("testing");
 	user.setPreferredNames("test test");
+	user.setPassword("test-password");
 	user.setSurname("Smith");
 	try {
 	    user.setEmailAddress("a@.b.com");
