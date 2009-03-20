@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
+
+import org.jasypt.digest.StandardStringDigester;
 
 import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
 
@@ -40,6 +43,9 @@ public class User implements Serializable {
     @ManyToMany(cascade=CascadeType.PERSIST)
     @JoinTable(name="openchurch_user_roles", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
     private List<Role> roles;
+    
+    @Transient
+    private boolean authenticated = false;
     
     public long getId() {
         return id;
@@ -103,7 +109,11 @@ public class User implements Serializable {
         return password;
     }
     public void setPassword(String password) {
-        this.password = password;
+    	StandardStringDigester digester = new StandardStringDigester();
+    	digester.setAlgorithm("SHA-256");
+    	digester.setIterations(5000);
+        this.password = digester.digest(password);
+        System.out.println("Digest: " + this.password);
     }
     public List<Address> getAddresses() {
         return addresses;
@@ -117,6 +127,15 @@ public class User implements Serializable {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+	public void authenticate(String password) {
+		StandardStringDigester digester = new StandardStringDigester();
+    	digester.setAlgorithm("SHA-256");
+    	digester.setIterations(5000);
+    	authenticated = digester.matches(password, this.password);
+	}
+	public boolean isAuthenticated() {
+		return authenticated;
+	}
     
     
 }
