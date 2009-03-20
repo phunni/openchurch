@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="openchurch-core/openchurch-core-data/target/classes" path="openchurch-core/openchurch-core-data/src/main/java"/>
+	<classpathentry kind="src" path="openchurch-core/openchurch-core-layout/src/test/java"/>
+	<classpathentry kind="src" path="openchurch-core/openchurch-core-layout/src/main/java"/>
 	<classpathentry excluding="**" kind="src" output="openchurch-core/openchurch-core-data/target/classes" path="openchurch-core/openchurch-core-data/src/main/resources"/>
 	<classpathentry kind="src" output="openchurch-core/openchurch-core-data/target/test-classes" path="openchurch-core/openchurch-core-data/src/test/java"/>
 	<classpathentry excluding="**" kind="src" output="openchurch-core/openchurch-core-data/target/test-classes" path="openchurch-core/openchurch-core-data/src/test/resources"/>
