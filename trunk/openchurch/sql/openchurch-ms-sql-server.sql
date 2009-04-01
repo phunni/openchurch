@@ -54,3 +54,8 @@ create table openchurch_user_roles (
     child bigint not null
 )
 
+create table openchurch_content_modules (
+    id bigint primary key,
+    moduleClassName varchar(250),
+    deletable bit
+)
