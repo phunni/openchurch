@@ -13,6 +13,8 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.co.monkeypower.openchurch.core.db.OpenChurchUtilityDatasourceForTesting;
+
 
 public class AddressTest {
     

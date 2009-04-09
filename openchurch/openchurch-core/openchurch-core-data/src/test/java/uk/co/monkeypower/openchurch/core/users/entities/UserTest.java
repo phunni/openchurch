@@ -18,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import uk.co.monkeypower.openchurch.core.db.OpenChurchUtilityDatasourceForTesting;
 import uk.co.monkeypower.openchurch.core.users.exception.UserAttributeValidationException;
 
 
