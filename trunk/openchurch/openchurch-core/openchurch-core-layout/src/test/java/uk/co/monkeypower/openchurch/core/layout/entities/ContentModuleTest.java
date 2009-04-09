@@ -4,6 +4,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.sql.DataSource;
@@ -11,6 +12,8 @@ import javax.sql.DataSource;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import uk.co.monkeypower.openchurch.core.db.OpenChurchUtilityDatasourceForTesting;
 
 
 public class ContentModuleTest {
@@ -37,9 +40,9 @@ public class ContentModuleTest {
 	
 	@Test
 	public void createContentModule() {
-		EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_layout_test");
+		EntityManager manager = factory.createEntityManager();
 		ContentModule module = new ContentModule();
-		module.setId(1);
 		module.setDeleteable(false);
 		module.setModuleClassName("test");
 		manager.getTransaction().begin();

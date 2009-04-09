@@ -2,14 +2,14 @@
   <parent>
     <artifactId>openchurch-core</artifactId>
     <groupId>uk.co.monkeypower.openchurch</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>uk.co.monkeypower.openchurch</groupId>
   <artifactId>openchurch-core-logic</artifactId>
   <name>openchurch-core-logic</name>
   <packaging>ejb</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1</version>
   <url>http://code.google.com/p/openchurch/</url>
   <repositories>
     <repository>
@@ -51,7 +51,7 @@
     <dependency>
       <groupId>uk.co.monkeypower.openchurch</groupId>
        <artifactId>openchurch-core-data</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1</version>
       <scope>provided</scope>
     </dependency>    
   </dependencies>

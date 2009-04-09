@@ -1,4 +1,4 @@
-package uk.co.monkeypower.openchurch.core.users.entities;
+package uk.co.monkeypower.openchurch.core.db;
 
 import java.io.IOException;
 import java.io.PrintWriter;
