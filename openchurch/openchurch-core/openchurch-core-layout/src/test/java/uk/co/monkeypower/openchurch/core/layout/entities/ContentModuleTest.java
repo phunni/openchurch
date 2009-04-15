@@ -1,5 +1,7 @@
 package uk.co.monkeypower.openchurch.core.layout.entities;
 
+import java.sql.Connection;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,10 +23,9 @@ public class ContentModuleTest {
 	private static DataSource dataSource;
 	
 	@BeforeClass
-	public static void setUpJNDI() {	
+	public static void setUpJNDI() {
 		System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.naming.java.javaURLContextFactory");
 		System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
-
 		dataSource = new OpenChurchUtilityDatasourceForTesting();
 		try {
 			InitialContext initCtx = new InitialContext();
@@ -35,11 +36,21 @@ public class ContentModuleTest {
 			initCtx.bind("java:comp/env/jdbc/openchurch", dataSource);
 		} catch(NamingException e){
 			//do nothing...
-		}
+		} 
 	}
 	
 	@Test
-	public void createContentModule() {
+	public void createContentModule() {	    	
+	    	try {
+	    	InitialContext initCtx = new InitialContext();
+		    DataSource test = (DataSource) initCtx.lookup("java:comp/env/jdbc/openchurch");
+		    Connection conn = test.getConnection();
+		    if (conn == null){
+		        System.out.println("Poo...");
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_layout_test");
 		EntityManager manager = factory.createEntityManager();
 		ContentModule module = new ContentModule();

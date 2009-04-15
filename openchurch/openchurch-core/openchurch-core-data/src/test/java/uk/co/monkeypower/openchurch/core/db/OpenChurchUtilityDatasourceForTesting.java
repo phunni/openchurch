@@ -20,7 +20,7 @@ public class OpenChurchUtilityDatasourceForTesting implements DataSource {
     public Connection getConnection() throws SQLException {
 	Properties props = new Properties();
 	try {
-	    props.load(new OpenChurchUtilityDatasourceForTesting().getClass().getClassLoader().getResourceAsStream("db.properties"));
+	    props.load(this.getClass().getClassLoader().getResourceAsStream("db.properties"));
 	} catch (IOException e) {
 	    System.out.println("Failed to open database connection: " + e);
 	    throw new SQLException("Failed to locate properties file for datasource");
@@ -34,6 +34,7 @@ public class OpenChurchUtilityDatasourceForTesting implements DataSource {
 	String url = props.getProperty("jdbc_url");
 	String username = props.getProperty("jdbc_username");
 	String password = props.getProperty("jdbc_password");
+	System.out.println("**** User: " + username + "\n URL: " + url);
 	return DriverManager.getConnection(url, username, password);	
     }
 
