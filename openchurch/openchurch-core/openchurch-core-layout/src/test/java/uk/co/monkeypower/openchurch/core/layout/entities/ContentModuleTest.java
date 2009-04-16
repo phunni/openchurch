@@ -41,16 +41,6 @@ public class ContentModuleTest {
 	
 	@Test
 	public void createContentModule() {	    	
-	    	try {
-	    	InitialContext initCtx = new InitialContext();
-		    DataSource test = (DataSource) initCtx.lookup("java:comp/env/jdbc/openchurch");
-		    Connection conn = test.getConnection();
-		    if (conn == null){
-		        System.out.println("Poo...");
-		    }
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_layout_test");
 		EntityManager manager = factory.createEntityManager();
 		ContentModule module = new ContentModule();
