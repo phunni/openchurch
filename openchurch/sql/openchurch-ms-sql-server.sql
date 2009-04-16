@@ -59,3 +59,9 @@ create table openchurch_content_modules (
     moduleClassName varchar(250),
     deleteable bit
 )
+
+create table openchurch_menu_items (
+    id bigint primary key,
+    title varchar(500) not null,
+    module_id bigint
+)
