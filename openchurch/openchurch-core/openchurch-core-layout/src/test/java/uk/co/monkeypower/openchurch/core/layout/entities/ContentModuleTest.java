@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import uk.co.monkeypower.openchurch.core.db.OpenChurchUtilityDatasourceForTesting;
 
@@ -49,6 +50,7 @@ public class ContentModuleTest {
 		manager.getTransaction().begin();
 		manager.persist(module);
 		manager.getTransaction().commit();
+		assertTrue(module.getId() != 0);
 	}
 	
 	@After
