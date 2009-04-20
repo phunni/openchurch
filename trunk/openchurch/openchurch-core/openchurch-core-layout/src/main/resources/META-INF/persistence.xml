@@ -6,6 +6,8 @@
         <provider>oracle.toplink.essentials.PersistenceProvider</provider>
         <jta-data-source>jdbc/openchurch</jta-data-source>
 		<class> uk.co.monkeypower.openchurch.core.layout.entities.ContentModule</class>
+		<class>uk.co.monkeypower.openchurch.core.layout.entities.MenuItem</class>
+		<class>uk.co.monkeypower.openchurch.core.layout.entities.Page</class>
         <properties>
         <property name="toplink.logging.level" value="FINE"/>
     </properties>
@@ -13,7 +15,9 @@
     <persistence-unit name="openchurch_layout_test">
         <provider>oracle.toplink.essentials.PersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/jdbc/openchurch</non-jta-data-source>
-		<class> uk.co.monkeypower.openchurch.core.layout.entities.ContentModule</class>
+		<class>uk.co.monkeypower.openchurch.core.layout.entities.ContentModule</class>
+		<class>uk.co.monkeypower.openchurch.core.layout.entities.MenuItem</class>
+		<class>uk.co.monkeypower.openchurch.core.layout.entities.Page</class>
         <properties>
         <property name="toplink.logging.level" value="FINE"/>
     </properties>
