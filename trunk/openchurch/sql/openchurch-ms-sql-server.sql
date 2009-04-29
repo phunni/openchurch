@@ -63,7 +63,7 @@ create table openchurch_content_modules (
 create table openchurch_menu_items (
     id bigint primary key,
     title varchar(500) not null,
-    module_id bigint
+    page_id bigint
 )
 
 create table openchurch_pages (
