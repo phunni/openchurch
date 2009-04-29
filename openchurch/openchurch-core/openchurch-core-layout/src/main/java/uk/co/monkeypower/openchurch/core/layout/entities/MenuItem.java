@@ -15,7 +15,7 @@ public class MenuItem {
     @TableGenerator(name="IdTable", allocationSize=2, table = "id_generator", pkColumnName="id_name", valueColumnName="id_value", pkColumnValue="INV_GEN")
     private long id;
     private String title;
-    private ContentModule module;
+    private Page page;
     
     public long getId() {
         return id;
@@ -29,12 +29,14 @@ public class MenuItem {
     public void setTitle(String title) {
         this.title = title;
     }
-    public ContentModule getModule() {
-        return module;
+    public Page getPage() {
+        return page;
     }
-    public void setModule(ContentModule module) {
-        this.module = module;
+    public void setPage(Page page) {
+        this.page = page;
     }
+    
+    
     
     
 

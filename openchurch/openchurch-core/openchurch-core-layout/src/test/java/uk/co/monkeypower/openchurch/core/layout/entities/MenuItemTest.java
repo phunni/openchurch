@@ -47,13 +47,13 @@ public class MenuItemTest {
 	    manager.persist(item);
 	    manager.getTransaction().commit();
 	    assertTrue(item.getId() != 0);
-	    ContentModule module = new ContentModule();
-	    module.setModuleClassName("test");
-	    module.setDeleteable(false);
+	    Page page = new Page();
+	    page.setTitle("test");
+	    page.setName("test");
 	    manager.getTransaction().begin();
-	    manager.persist(module);
+	    manager.persist(page);
 	    manager.getTransaction().commit();
-	    item.setModule(module);
+	    item.setPage(page);
 	    manager.getTransaction().begin();
 	    manager.merge(item);
 	    manager.getTransaction().commit();	    
@@ -64,7 +64,7 @@ public class MenuItemTest {
 		EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
 		Query cleanUpQuery = manager.createQuery("delete from MenuItem m where m.title = 'test menu item'");
 		cleanUpQuery.executeUpdate();
-		cleanUpQuery = manager.createQuery("delete from ContentModule c where c.moduleClassName = 'test'");
+		cleanUpQuery = manager.createQuery("delete from Page p where p.name = 'test'");
 		cleanUpQuery.executeUpdate();
 	}
 
