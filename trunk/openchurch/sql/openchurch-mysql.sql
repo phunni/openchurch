@@ -74,3 +74,13 @@ create table openchurch_page_modules (
     child bigint not null
 );
 
+create table openchurch_menus (
+     id bigint primary key,
+    name varchar(500) not null
+);
+
+create table openchurch_menu_menutitems (
+    parent bigint not null,
+    child bigint not null
+);
+
