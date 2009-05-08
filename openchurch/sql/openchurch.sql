@@ -1,7 +1,7 @@
 -- uncomment the following line if you want to destroy and re-create an 
 -- exisiting openchurch database...
 
---drop database openchurch;
+drop database openchurch;
 
 create database openchurch;
 
@@ -82,7 +82,7 @@ create table openchurch_menus (
     name varchar(500) not null
 );
 
-create table openchurch_menu_menutitems (
+create table openchurch_menu_menuitems (
     parent bigint not null,
     child bigint not null
 );
