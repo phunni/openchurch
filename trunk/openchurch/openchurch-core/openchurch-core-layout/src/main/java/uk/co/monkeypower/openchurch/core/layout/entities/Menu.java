@@ -21,7 +21,7 @@ public class Menu {
     private long id;
     private String name;
     @ManyToMany()
-    @JoinTable(name="openchurch_menu_menutitems", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
+    @JoinTable(name="openchurch_menu_menuitems", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
     private List<MenuItem> items;
     
     public long getId() {
