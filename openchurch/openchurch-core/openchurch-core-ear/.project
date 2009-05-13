@@ -3,6 +3,10 @@
 	<name>openchurch-core-ear</name>
 	<comment></comment>
 	<projects>
+		<project>openchurch-core-ear</project>
+		<project>openchurch-core-web</project>
+		<project>openchurch-core-data</project>
+		<project>openchurch-core-logic</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
