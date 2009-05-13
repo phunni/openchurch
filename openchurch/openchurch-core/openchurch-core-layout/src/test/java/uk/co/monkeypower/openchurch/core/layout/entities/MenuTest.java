@@ -77,7 +77,7 @@ public class MenuTest {
         EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
         Query cleanUpQuery = manager.createQuery("delete from MenuItem m where m.title = 'test'");
         cleanUpQuery.executeUpdate();
-        cleanUpQuery = manager.createQuery("delete from Menu m where m.title = 'test'");
+        cleanUpQuery = manager.createQuery("delete from Menu m where m.name = 'test'");
         cleanUpQuery.executeUpdate();
     }
     

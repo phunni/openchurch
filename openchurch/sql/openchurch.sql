@@ -57,7 +57,7 @@ create table openchurch_user_roles (
 create table openchurch_content_modules (
     id bigint primary key,
     moduleClassName varchar(250),
-    deletable bit
+    deleteable bit
 );
 
 create table openchurch_menu_items (
