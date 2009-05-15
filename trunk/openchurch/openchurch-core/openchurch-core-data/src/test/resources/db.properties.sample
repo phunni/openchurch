@@ -1,4 +1,4 @@
 jdbc_url=jdbc:mysql://localhost:3306/openchurch
 jdbc_username=openchurch
-jdbc_password=n0ap0tp0t
+jdbc_password=openchurch
 jdbc_driver_class=com.mysql.jdbc.Driver
