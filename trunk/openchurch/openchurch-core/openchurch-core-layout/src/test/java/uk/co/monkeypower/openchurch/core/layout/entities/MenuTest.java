@@ -49,7 +49,6 @@ public class MenuTest {
         menu.setName("test");
         manager.getTransaction().begin();
         manager.persist(menu);
-        manager.getTransaction().commit();
         assertTrue(menu.getId() >= 1);
         MenuItem firstItem = new MenuItem();
         firstItem.setTitle("test");
@@ -57,17 +56,14 @@ public class MenuTest {
         secondItem.setTitle("test");
         MenuItem thirdItem = new MenuItem();
         thirdItem.setTitle("test");
-        manager.getTransaction().begin();
         manager.persist(firstItem);
         manager.persist(secondItem);
         manager.persist(thirdItem);
-        manager.getTransaction().commit();
         List<MenuItem> items = new ArrayList<MenuItem>();
         items.add(firstItem);
         items.add(secondItem);
         items.add(thirdItem);
         menu.setItems(items);
-        manager.getTransaction().begin();
         manager.merge(menu);
         manager.getTransaction().commit();
     }

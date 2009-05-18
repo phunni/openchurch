@@ -48,21 +48,16 @@ public class PageTest {
         page.setTitle("test");
         manager.getTransaction().begin();
         manager.persist(page);
-        manager.getTransaction().commit();
         assertTrue(page.getId() >=1);
         List<ContentModule> modules = new ArrayList<ContentModule>();
         ContentModule module = new ContentModule();
         module.setModuleClassName("test");
         module.setDeleteable(true);
-        manager.getTransaction().begin();
         manager.persist(module);
-        manager.getTransaction().commit();
         modules.add(module);
         page.setModules(modules);
-        manager.getTransaction().begin();
         manager.merge(page);
-        manager.getTransaction().commit();
-        
+        manager.getTransaction().commit();       
     }
 
 }
