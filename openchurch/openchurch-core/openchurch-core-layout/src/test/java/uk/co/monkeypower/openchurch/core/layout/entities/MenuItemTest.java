@@ -45,18 +45,14 @@ public class MenuItemTest {
 	    item.setTitle("test menu item");
 	    manager.getTransaction().begin();
 	    manager.persist(item);
-	    manager.getTransaction().commit();
 	    assertTrue(item.getId() != 0);
 	    Page page = new Page();
 	    page.setTitle("test");
 	    page.setName("test");
-	    manager.getTransaction().begin();
-	    manager.persist(page);
-	    manager.getTransaction().commit();
 	    item.setPage(page);
-	    manager.getTransaction().begin();
-	    manager.merge(item);
-	    manager.getTransaction().commit();	    
+	    manager.persist(page);
+	    manager.merge(item);	   
+	    manager.getTransaction().commit();
 	}
 	
 	@After
