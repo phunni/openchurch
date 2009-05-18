@@ -19,7 +19,7 @@ In order to successfully install OpenChurch, you will require the following:
     Locate the pom.xml in openchurch/openchurch-core/openchurch-core-data and uncomment the appropriate JDBC driver in the dependencies
     # In the root directory of the project, you will find a directory called SQL.  Run the SQL that you find there on your database. *Please Note:* This script has only currently been tested on MS SQL Server & MySQL. It cannot be guaranteed to work on any other database server.  Other servers will be fully supported in the near future.
     # Create a JNDI Datasource called 'jdbc/openchurch' pointing to the databse that was created in the last step.
-    # Edit the openchurch-core/openchurch-core-data/src/test/resources/db.properties file to contain the relvant values for connecting to your database.  This is for the unit tests.
+    # Edit the openchurch-core/openchurch-core-data/src/test/resources/db.properties file to contain the relvant values for connecting to your database and save it as db.properties .  This is for the unit tests.  
     # In the root directory of the project, run {{{ mvn package }}}
     # If all has gone well you should now have an ear file in the target directory.
 
