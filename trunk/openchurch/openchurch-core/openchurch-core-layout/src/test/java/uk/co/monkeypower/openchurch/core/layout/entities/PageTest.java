@@ -57,7 +57,8 @@ public class PageTest {
         modules.add(module);
         page.setModules(modules);
         manager.merge(page);
-        manager.getTransaction().commit();       
+        manager.getTransaction().commit();  
+        manager.close();
     }
 
 }
