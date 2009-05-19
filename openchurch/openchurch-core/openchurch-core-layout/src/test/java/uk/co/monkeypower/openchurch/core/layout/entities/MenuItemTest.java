@@ -53,6 +53,7 @@ public class MenuItemTest {
 	    manager.persist(page);
 	    manager.merge(item);	   
 	    manager.getTransaction().commit();
+	    manager.close();
 	}
 	
 	@After
@@ -62,6 +63,7 @@ public class MenuItemTest {
 		cleanUpQuery.executeUpdate();
 		cleanUpQuery = manager.createQuery("delete from Page p where p.name = 'test'");
 		cleanUpQuery.executeUpdate();
+		manager.close();
 	}
 
 }

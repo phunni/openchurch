@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.LockModeType;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.sql.DataSource;
@@ -66,15 +67,17 @@ public class MenuTest {
         menu.setItems(items);
         manager.merge(menu);
         manager.getTransaction().commit();
+        manager.close();
     }
     
     @After
     public void cleanUp(){
         EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
-        Query cleanUpQuery = manager.createQuery("delete from MenuItem m where m.title = 'test'");
-        cleanUpQuery.executeUpdate();
-        cleanUpQuery = manager.createQuery("delete from Menu m where m.name = 'test'");
-        cleanUpQuery.executeUpdate();
+        Query cleanUpMenutItemsQuery = manager.createQuery("delete from MenuItem m where m.title = 'test'");
+        cleanUpMenutItemsQuery.executeUpdate();
+        Query cleanUpMenusQuery = manager.createQuery("delete from Menu m where m.name = 'test'");
+        cleanUpMenusQuery.executeUpdate();
+        manager.close();
     }
     
 
