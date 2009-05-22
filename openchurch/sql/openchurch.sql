@@ -26,6 +26,9 @@ create table openchurch_users (
     password varchar(100) not null
 );
 
+create index idx_openchurch_users on openchurch_users(id);
+create index idx_openchurch_users_username on openchurch_users(username);
+
 create table openchurch_addresses (
     id bigint primary key,
     firstLine varchar(250) not null,
@@ -35,6 +38,8 @@ create table openchurch_addresses (
     county varchar(250) not null,
     postCode varchar(250) not null
 );
+
+create index idx_openchurch_addresses on openchurch_addresses(id);
 
 create table openchurch_user_addresses (
     parent bigint not null,
@@ -60,17 +65,24 @@ create table openchurch_content_modules (
     deleteable bit
 );
 
+create index idx_openchurch_content_modules on openchurch_content_modules(id);
+
 create table openchurch_menu_items (
     id bigint primary key,
     title varchar(500) not null,
     page_id bigint
 );
 
+create index idx_openchurch_menu_items on openchurch_menu_items(id);
+create index idx_openchurch_menu_items_title on openchurch_menu_items(title);
+
 create table openchurch_pages (
      id bigint primary key,
     name varchar(500) not null,
     title varchar(500) not null
 );
+
+create index idx_openchurch_pages on openchurch_pages(id);
 
 create table openchurch_page_modules (
     parent bigint not null,
