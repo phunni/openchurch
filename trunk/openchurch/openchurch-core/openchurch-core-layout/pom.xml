@@ -17,12 +17,5 @@
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
-  	<dependency>
-  		<groupId>uk.co.monkeypower.openchurch</groupId>
-  		<artifactId>openchurch-core-data</artifactId>
-  		<version>0.1</version>
-  		<type>test-jar</type>
-  		<scope>test</scope>
-  	</dependency>
   </dependencies>
 </project>
