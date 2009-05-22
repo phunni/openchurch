@@ -35,7 +35,8 @@ public class OpenChurchUtilityDatasourceForTesting implements DataSource {
 	String username = props.getProperty("jdbc_username");
 	String password = props.getProperty("jdbc_password");
 	System.out.println("**** User: " + username + "\n URL: " + url);
-	return DriverManager.getConnection(url, username, password);	
+	Connection conn = DriverManager.getConnection(url, username, password);
+	return conn;	
     }
 
     public Connection getConnection(String username, String password) throws SQLException {
