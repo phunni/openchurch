@@ -1,47 +1,45 @@
 package uk.co.monkeypower.openchurch.core.users.entities;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.Vector;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.sql.DataSource;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uk.co.monkeypower.openchurch.core.db.OpenChurchUtilityDatasourceForTesting;
 
 
 public class RoleTest {
     
-    private static DataSource dataSource;
-    
-    @BeforeClass
-    public static void setUpJNDI() {	
-	System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.naming.java.javaURLContextFactory");
-	System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
-	
+	private static EntityManager manager;
 
-	dataSource = new OpenChurchUtilityDatasourceForTesting();
-	try {
-	    InitialContext initCtx = new InitialContext();
-	    initCtx.createSubcontext("java:");
-	    initCtx.createSubcontext("java:comp");
-	    initCtx.createSubcontext("java:comp/env");
-	    initCtx.createSubcontext("java:comp/env/jdbc");
-	    initCtx.bind("java:comp/env/jdbc/openchurch", dataSource);
-	} catch(NamingException e){
-	    //do nothing...
-	}
+    @BeforeClass
+    public static void setUpJNDI() {
+        Properties jdbcProperties = new Properties();
+        try {
+            jdbcProperties.load(RoleTest.class.getClassLoader().getResourceAsStream("db.properties"));
+        } catch (IOException e) {
+            System.out.println("Failed to locate properties file for datasource: " + e);
+        }
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_users_test", jdbcProperties);
+        manager = factory.createEntityManager();
+
+    }
+    
+    @AfterClass 
+    public static void closeManager(){ 
+        manager.close(); 
     }
     
     @Test
