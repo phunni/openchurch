@@ -61,23 +61,14 @@ public class MenuTest {
         manager.getTransaction().begin();
         manager.merge(menu);
         manager.getTransaction().commit();
-        manager.close();
     }
     
     @After
     public void cleanUp(){
-        Query cleanUpMenuItemsQuery = manager.createQuery("select m from MenuItem m where m.title = 'test'");
-        manager.getTransaction().begin();
-        List<MenuItem> menuItems = cleanUpMenuItemsQuery.getResultList();
-        manager.getTransaction().commit();
-        for (MenuItem current : menuItems) {
-            manager.getTransaction().begin();
-            manager.remove(current);
-            manager.getTransaction().commit();
-        }
+        Query cleanUpMenuItemsQuery = manager.createQuery("delete from MenuItem m where m.title = 'test'");
+       cleanUpMenuItemsQuery.executeUpdate();
         Query cleanUpMenusQuery = manager.createQuery("delete from Menu m where m.name = 'test'");
         cleanUpMenusQuery.executeUpdate();
-        manager.close();
     }
     
     @AfterClass 

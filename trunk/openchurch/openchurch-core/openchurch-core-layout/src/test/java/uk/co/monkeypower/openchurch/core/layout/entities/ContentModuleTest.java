@@ -42,7 +42,6 @@ public class ContentModuleTest {
         manager.persist(module);
         manager.getTransaction().commit();
         assertTrue(module.getId() != 0);
-        manager.close();
     }
 
     @After
@@ -50,7 +49,6 @@ public class ContentModuleTest {
         EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
         Query cleanUpQuery = manager.createQuery("delete from ContentModule c where c.moduleClassName = 'test'");
         cleanUpQuery.executeUpdate();
-        manager.close();
     }
     
     @AfterClass 
