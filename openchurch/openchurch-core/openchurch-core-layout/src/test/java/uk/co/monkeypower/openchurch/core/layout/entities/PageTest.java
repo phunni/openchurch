@@ -51,7 +51,6 @@ public class PageTest {
         page.setModules(modules);
         manager.merge(page);
         manager.getTransaction().commit();  
-        manager.close();
     }
     
     @AfterClass 
