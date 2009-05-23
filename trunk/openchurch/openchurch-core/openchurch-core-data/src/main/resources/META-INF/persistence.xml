@@ -14,7 +14,6 @@
     </persistence-unit>
     <persistence-unit name="openchurch_users_test">
         <provider>oracle.toplink.essentials.PersistenceProvider</provider>
-        <non-jta-data-source>java:comp/env/jdbc/openchurch</non-jta-data-source>
         <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Role</class>
