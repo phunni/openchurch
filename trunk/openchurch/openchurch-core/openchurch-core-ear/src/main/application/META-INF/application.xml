@@ -8,9 +8,6 @@
 			<context-root>openchurch-core-web</context-root>
 		</web>
 	</module>
-	<module>
-		<java>jtds-1.2.2.jar</java>
-	</module>
 	<module id="EjbModule_1242222379022">
 		<ejb>openchurch-core-logic-0.1.jar</ejb>
 	</module>
