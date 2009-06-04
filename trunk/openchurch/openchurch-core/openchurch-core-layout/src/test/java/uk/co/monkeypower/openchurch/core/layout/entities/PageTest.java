@@ -8,8 +8,10 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,6 +53,14 @@ public class PageTest {
         page.setModules(modules);
         manager.merge(page);
         manager.getTransaction().commit();  
+    }
+    
+   @After
+    public void cleanUp(){
+        Query cleanUpPagesQuery = manager.createQuery("delete from Page p where p.title = 'test'");
+        cleanUpPagesQuery.executeUpdate();
+        Query cleanUpModulesQuery = manager.createQuery("delete from ContentModule c where c.moduleClassName = 'test'");
+        cleanUpModulesQuery.executeUpdate();
     }
     
     @AfterClass 

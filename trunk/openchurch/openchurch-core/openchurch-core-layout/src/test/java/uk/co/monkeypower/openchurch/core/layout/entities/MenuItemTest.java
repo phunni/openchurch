@@ -49,11 +49,15 @@ public class MenuItemTest {
 
     @After
     public void cleanUpTestData() {
-        EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
+        manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
+        manager.getTransaction().begin();
         Query cleanUpQuery = manager.createQuery("delete from MenuItem m where m.title = 'test menu item'");
         cleanUpQuery.executeUpdate();
+        manager.getTransaction().commit();
+        manager.getTransaction().begin();
         cleanUpQuery = manager.createQuery("delete from Page p where p.name = 'test'");
         cleanUpQuery.executeUpdate();
+        manager.getTransaction().commit();
     }
 
     

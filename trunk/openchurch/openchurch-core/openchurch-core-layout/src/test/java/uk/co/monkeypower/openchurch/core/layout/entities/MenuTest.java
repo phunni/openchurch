@@ -65,10 +65,14 @@ public class MenuTest {
     
     @After
     public void cleanUp(){
+        manager.getTransaction().begin();
         Query cleanUpMenuItemsQuery = manager.createQuery("delete from MenuItem m where m.title = 'test'");
-       cleanUpMenuItemsQuery.executeUpdate();
+        cleanUpMenuItemsQuery.executeUpdate();
+        manager.getTransaction().commit();
+        manager.getTransaction().begin();
         Query cleanUpMenusQuery = manager.createQuery("delete from Menu m where m.name = 'test'");
         cleanUpMenusQuery.executeUpdate();
+        manager.getTransaction().commit();
     }
     
     @AfterClass 

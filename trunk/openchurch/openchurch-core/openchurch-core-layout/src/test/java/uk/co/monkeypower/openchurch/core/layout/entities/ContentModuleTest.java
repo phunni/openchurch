@@ -37,19 +37,21 @@ public class ContentModuleTest {
     public void createContentModule() {
         ContentModule module = new ContentModule();
         module.setDeleteable(false);
-        module.setModuleClassName("test");
+        module.setModuleClassName("test");  
         manager.getTransaction().begin();
-        manager.persist(module);
+        manager.persist(module);  
         manager.getTransaction().commit();
         assertTrue(module.getId() != 0);
     }
 
     @After
     public void cleanUpTestData() {
-        EntityManager manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
+        manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
         Query cleanUpQuery = manager.createQuery("delete from ContentModule c where c.moduleClassName = 'test'");
+        manager.getTransaction().begin();
         cleanUpQuery.executeUpdate();
-    }
+        manager.getTransaction().commit();
+    } 
     
     @AfterClass 
     public static void closeManager(){ 

@@ -40,7 +40,5 @@ public class ContentModule {
     public void setDeleteable(boolean deleteable) {
 	this.deleteable = deleteable;
     }
-	
-	
 
 }
