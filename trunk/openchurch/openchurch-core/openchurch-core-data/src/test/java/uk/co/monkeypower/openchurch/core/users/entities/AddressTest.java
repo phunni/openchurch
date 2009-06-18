@@ -14,6 +14,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.co.monkeypower.openchurch.core.users.exception.AddressAttributeValidationException;
+
 
 
 public class AddressTest {
