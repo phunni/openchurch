@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import uk.co.monkeypower.openchurch.core.users.exception.AddressAttributeValidationException;
+
 @Entity
 @Table(name="openchurch_addresses")
 public class Address implements Serializable {
