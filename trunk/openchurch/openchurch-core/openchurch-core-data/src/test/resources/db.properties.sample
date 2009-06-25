@@ -2,7 +2,3 @@ toplink.jdbc.url=jdbc:mysql://localhost:3306/openchurch
 toplink.jdbc.user=openchurch
 toplink.jdbc.password=openchurch
 toplink.jdbc.driver=com.mysql.jdbc.Driver
-jdbc_url=jdbc:mysql://localhost:3306/openchurch
-jdbc_username=openchurch
-jdbc_password=openchurch
-jdbc_driver_class=com.mysql.jdbc.Driver
