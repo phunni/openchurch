@@ -6,9 +6,7 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,31 +31,24 @@ public class MenuItemTest {
 
     @Test
     public void createMenuItem() {
-        MenuItem item = new MenuItem();
-        item.setTitle("test menu item");
-        manager.getTransaction().begin();
-        manager.persist(item);
-        assertTrue(item.getId() != 0);
-        Page page = new Page();
-        page.setTitle("test");
-        page.setName("test");
-        item.setPage(page);
-        manager.persist(page);
-        manager.merge(item);
-        manager.getTransaction().commit();
-    }
-
-    @After
-    public void cleanUpTestData() {
-        manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
-        manager.getTransaction().begin();
-        Query cleanUpQuery = manager.createQuery("delete from MenuItem m where m.title = 'test menu item'");
-        cleanUpQuery.executeUpdate();
-        manager.getTransaction().commit();
-        manager.getTransaction().begin();
-        cleanUpQuery = manager.createQuery("delete from Page p where p.name = 'test'");
-        cleanUpQuery.executeUpdate();
-        manager.getTransaction().commit();
+        try {
+            MenuItem item = new MenuItem();
+            item.setTitle("test menu item");
+            manager.getTransaction().begin();
+            manager.persist(item);
+            assertTrue(item.getId() != 0);
+            Page page = new Page();
+            page.setTitle("test");
+            page.setName("test");
+            item.setPage(page);
+            manager.persist(page);
+            manager.merge(item);
+            manager.flush();
+        } finally {
+            if(manager.getTransaction().isActive()){
+                manager.getTransaction().rollback();
+            } 
+        }
     }
 
     

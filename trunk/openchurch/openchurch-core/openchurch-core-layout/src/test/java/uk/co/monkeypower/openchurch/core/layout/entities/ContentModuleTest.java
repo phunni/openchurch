@@ -6,9 +6,7 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -35,23 +33,21 @@ public class ContentModuleTest {
 
     @Test
     public void createContentModule() {
-        ContentModule module = new ContentModule();
-        module.setDeleteable(false);
-        module.setModuleClassName("test");  
-        manager.getTransaction().begin();
-        manager.persist(module);  
-        manager.getTransaction().commit();
-        assertTrue(module.getId() != 0);
+        try {
+            ContentModule module = new ContentModule();
+            module.setDeleteable(false);
+            module.setModuleClassName("test");  
+            manager.getTransaction().begin();
+            manager.persist(module);  
+            manager.flush();
+            assertTrue(module.getId() != 0);
+        } finally {
+           if(manager.getTransaction().isActive()){
+               manager.getTransaction().rollback();
+           }
+        }
     }
 
-    @After
-    public void cleanUpTestData() {
-        manager = Persistence.createEntityManagerFactory("openchurch_layout_test").createEntityManager();
-        Query cleanUpQuery = manager.createQuery("delete from ContentModule c where c.moduleClassName = 'test'");
-        manager.getTransaction().begin();
-        cleanUpQuery.executeUpdate();
-        manager.getTransaction().commit();
-    } 
     
     @AfterClass 
     public static void closeManager(){ 
