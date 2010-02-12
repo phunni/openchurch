@@ -1,9 +1,9 @@
 -- uncomment the following line if you want to destroy and re-create an 
 -- exisiting openchurch database...
 
---drop database openchurch;
+drop database openchurch;
 
-create database openchurch;
+create database openchurch DEFAULT CHARACTER  SET latin1 COLLATE latin1_bin;
 
 USE openchurch;
 
@@ -24,6 +24,30 @@ create table openchurch_users (
     workTelNumber varchar(100),
     mobileTelNumber varchar(100),
     password varchar(100) not null
+);
+
+insert into openchurch_users values (
+	0,
+	'guest',
+	'Honoured',
+	'Guest',
+	'no@email.address',
+	null,
+	null,
+	null,
+	''
+);
+
+insert into openchurch_users values (
+	1,
+	'admin',
+	'Esteemed',
+	'Admin',
+	'changeme@yourearliest.convinience',
+	null,
+	null,
+	null,
+	'eSL/wwP2+1kwLCbERaZx++BYljN8nLfnN2qQ5uhTQLep7HDILk+4gw=='
 );
 
 create index idx_openchurch_users on openchurch_users(id);
@@ -58,6 +82,8 @@ create table openchurch_user_roles (
     parent bigint not null,
     child bigint not null
 );
+
+insert into openchurch_user_roles values (1,0);
 
 create table openchurch_content_modules (
     id bigint primary key,

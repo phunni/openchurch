@@ -1,5 +1,9 @@
 package uk.co.monkeypower.openchurch.core.users.beans;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,14 +11,12 @@ import org.junit.Test;
 
 import uk.co.monkeypower.openchurch.core.users.entities.Role;
 import uk.co.monkeypower.openchurch.core.users.entities.User;
-import static org.junit.Assert.*;
 
 
 
 public class UserManagerTest {
-    
-    
-    @Test
+	
+	@Test
     public void setUser() {
 	UserManagerBean manager = new UserManagerBean();
 	assertNotNull(manager);

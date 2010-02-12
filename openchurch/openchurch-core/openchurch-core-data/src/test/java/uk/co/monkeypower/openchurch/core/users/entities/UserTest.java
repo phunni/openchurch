@@ -68,6 +68,7 @@ public class UserTest {
 		user.setPreferredNames("test-name");
 		user.setSurname("test-surname");
 		user.setEmailAddress("test@test.co.uk");
+		user.setPassword("test-password");
 		manager.getTransaction().begin();
 		manager.persist(user);
 		manager.getTransaction().commit();
@@ -139,6 +140,30 @@ public class UserTest {
 		user.setPassword("test-password");
 		user.authenticate("test-password");
 		assertTrue(user.isAuthenticated());
+		user.setPassword("adminadmin");
+		System.out.println(user.getPassword());
+	}
+	
+	// This isn't really the place to do this as it's actually testing the setup of 
+	// the database as opposed to the User class.  It seemed reasonable though.
+	@Test
+	public void confirmAdminAndGuestUserSetUp() {
+		Query findUserQuery = manager.createQuery("select u from User u where u.username = ?1");
+		findUserQuery.setParameter(1, "admin");
+		User user = (User) findUserQuery.getSingleResult();
+		assertNotNull(user);
+		List<Role> roles = user.getRoles();
+		boolean isAdmin = false;
+		for (Role currentRole : roles) {
+			if (currentRole.getTitle().equals("admin")) {
+				isAdmin = true;
+			}
+		}
+		assertTrue(isAdmin);
+		user.authenticate("adminadmin");
+		findUserQuery.setParameter(1, "guest");
+		user = (User) findUserQuery.getSingleResult();
+		assertNotNull(user);
 	}
 
 	@After
