@@ -68,7 +68,7 @@ public class UserManagerBean implements UserManager {
     /* (non-Javadoc)
      * @see uk.co.monkeypower.openchurch.core.users.beans.UserManager#findUser(java.lang.String)
      */
-    public User findUser(String username) {
+    public User getUser(String username) {
 	Query findUserQuery = entityManager.createQuery("select u from User u where u.username = ?1");
 	findUserQuery.setParameter(1, username);
 	user = (User) findUserQuery.getSingleResult();

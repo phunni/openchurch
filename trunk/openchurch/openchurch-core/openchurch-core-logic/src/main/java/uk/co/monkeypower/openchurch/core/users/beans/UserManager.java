@@ -23,7 +23,7 @@ public interface UserManager {
      * 
      * @return the user
      */
-    public User findUser(String username);
+    public User getUser(String username);
     
     /**
      * Edits the user.
