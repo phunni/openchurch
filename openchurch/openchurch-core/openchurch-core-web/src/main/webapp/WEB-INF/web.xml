@@ -7,6 +7,14 @@
    <servlet-name>TestUsers</servlet-name>
    <servlet-class>uk.co.monkeypower.openchurch.core.web.servlets.TestUserSetup</servlet-class>
   </servlet>
+  <servlet>
+   <servlet-name>CoreServlet</servlet-name>
+   <servlet-class>uk.co.monkeypower.openchurch.core.web.servlets.OpenchurchCoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>CoreServlet</servlet-name>
+   <url-pattern>/</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
    <servlet-name>TestUsers</servlet-name>
    <url-pattern>/testUsers</url-pattern>
