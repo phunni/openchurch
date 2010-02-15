@@ -4,7 +4,7 @@
 	<display-name>openchurch-core-ear</display-name>
 	<module id="WebModule_1242222375254">
 		<web>
-			<web-uri>openchurch-core-web-0.1.war</web-uri>
+			<web-uri>openchurch-core-web.war</web-uri>
 			<context-root>openchurch</context-root>
 		</web>
 	</module>
