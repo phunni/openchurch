@@ -11,9 +11,17 @@
    <servlet-name>CoreServlet</servlet-name>
    <servlet-class>uk.co.monkeypower.openchurch.core.web.servlets.OpenchurchCoreServlet</servlet-class>
   </servlet>
+  <servlet>
+   <servlet-name>LoginServlet</servlet-name>
+   <servlet-class>uk.co.monkeypower.openchurch.core.web.servlets.LoginServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
    <servlet-name>CoreServlet</servlet-name>
    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+   <servlet-name>LoginServlet</servlet-name>
+   <url-pattern>/?page=login</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
    <servlet-name>TestUsers</servlet-name>

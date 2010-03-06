@@ -18,14 +18,14 @@
       <groupId>uk.co.monkeypower.openchurch</groupId>
        <artifactId>openchurch-core-data</artifactId>
       <version>0.1</version>
-      <scope>compile</scope>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>uk.co.monkeypower.openchurch</groupId>
       <artifactId>openchurch-core-logic</artifactId>
       <version>0.1</version>
       <type>ejb</type>
-      <scope>compile</scope>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>uk.co.monkeypower.openchurch</groupId>
@@ -33,6 +33,47 @@
       <version>0.1</version>
       <type>war</type>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>uk.co.monkeypower.openchurch</groupId>
+      <artifactId>openchurch-core-logic</artifactId>
+      <version>0.1</version>
+      <type>ejb-client</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>jstl</artifactId>
+    	<version>1.2</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>taglibs</groupId>
+    	<artifactId>standard</artifactId>
+    	<version>1.1.2</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>1.2.14</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.ibm.icu</groupId>
+    	<artifactId>icu4j</artifactId>
+    	<version>4.0.1</version>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.jasypt</groupId>
+    	<artifactId>jasypt</artifactId>
+    	<version>1.6</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
     </dependency>
   </dependencies>  
 
@@ -67,6 +108,11 @@
                 <artifactId>openchurch-core-data</artifactId>
                 <bundleFileName>entity.jar</bundleFileName>
              </jarModule>
+             <ejbClientModule>
+             	<groupId>uk.co.monkeypower.openchurch</groupId>
+      			<artifactId>openchurch-core-logic</artifactId>
+      			<bundleDir>lib/</bundleDir>
+             </ejbClientModule>
           </modules>
         </configuration>
       </plugin>

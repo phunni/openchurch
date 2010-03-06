@@ -19,6 +19,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <!-- In version 2.x, this was incorrectly named warSourceExcludes -->
+          <warSourceExcludes>WEB-INF/lib/*.jar</warSourceExcludes>
           <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
           <archive>
             <manifest>

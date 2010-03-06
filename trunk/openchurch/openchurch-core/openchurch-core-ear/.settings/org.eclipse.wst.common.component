@@ -2,38 +2,11 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
 <wb-module deploy-name="openchurch-core-ear">
 <wb-resource deploy-path="/" source-path="/src/main/application"/>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jasypt/jasypt/1.5/jasypt-1.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/resource/openchurch-core-web/openchurch-core-web">
             <dependent-object>WebModule_1242222375254</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/persistence/persistence-api/1.0b/persistence-api-1.0b.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/toplink/essentials/toplink-essentials/2.0-36/toplink-essentials-2.0-36.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-<dependent-module archiveName="openchurch-core-data-0.1.jar" deploy-path="/" handle="module:/resource/openchurch-core-data/openchurch-core-data">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-<dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/toplink/essentials/toplink-essentials-agent/2.0-36/toplink-essentials-agent-2.0-36.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-<dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.1/commons-codec-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-<dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/icu/icu4j/4.0.1/icu4j-4.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-<dependent-module deploy-path="/" handle="module:/resource/openchurch-core-logic/openchurch-core-logic">
+        <dependent-module deploy-path="/" handle="module:/resource/openchurch-core-logic/openchurch-core-logic">
             <dependent-object>EjbModule_1242222379022</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
