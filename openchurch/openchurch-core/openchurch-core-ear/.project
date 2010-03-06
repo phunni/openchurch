@@ -4,8 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>openchurch-core-web</project>
-		<project>openchurch-core-data</project>
 		<project>openchurch-core-logic</project>
+		<project>openchurch-core-ear</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

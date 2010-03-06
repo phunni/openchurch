@@ -3,6 +3,7 @@ package uk.co.monkeypower.openchurch.core.users.beans;
 
 import javax.ejb.Local;
 
+import uk.co.monkeypower.openchurch.core.users.beans.exceptions.UserManagementException;
 import uk.co.monkeypower.openchurch.core.users.entities.User;
 
 /**
@@ -22,8 +23,9 @@ public interface UserManager {
      * @param username the username
      * 
      * @return the user
+     * @throws UserManagementException 
      */
-    public User getUser(String username);
+    public User getUser(String username) throws UserManagementException;
     
     /**
      * Edits the user.
