@@ -42,7 +42,9 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		LOG.info("The username is: " + username);
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("The username is: " + username);
+		}
 		
 		String viewURL = "/WEB-INF/jsp/login.jsp";
 		

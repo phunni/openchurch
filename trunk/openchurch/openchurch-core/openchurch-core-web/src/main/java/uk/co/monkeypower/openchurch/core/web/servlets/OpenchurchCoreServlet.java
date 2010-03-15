@@ -35,7 +35,9 @@ public class OpenchurchCoreServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		//Get the User object
-		LOG.info("doPost in the core servlet");
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("doPost in the core servlet");
+		}
 		UserManager userManager = null;
 		try {
 			InitialContext ctx = new InitialContext();
