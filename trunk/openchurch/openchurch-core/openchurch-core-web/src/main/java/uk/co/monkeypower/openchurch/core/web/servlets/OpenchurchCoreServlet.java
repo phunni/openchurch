@@ -66,9 +66,7 @@ public class OpenchurchCoreServlet extends HttpServlet {
 		String viewURL = "/WEB-INF/jsp/index.jsp";
 		if (action == null) {
 			//do nothing we want the default
-		} else if (action.equals("login")) {
-			viewURL = "/WEB-INF/jsp/login.jsp";
-		}
+		} 
 		
 		
 		//invoke the view
