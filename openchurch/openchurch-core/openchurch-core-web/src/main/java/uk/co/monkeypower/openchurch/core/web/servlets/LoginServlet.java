@@ -22,6 +22,16 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private final Logger LOG = Logger.getLogger(LoginServlet.class);
+	
+	
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+
 
 	@Override
 	protected void doPost(HttpServletRequest request,
@@ -30,37 +40,44 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
+		HttpSession session = request.getSession();
+		
 		LOG.info("The username is: " + username);
 		
-		HttpSession session = request.getSession();
-		//Get the User object
-		UserManager userManager = null;
-		try {
-			InitialContext ctx = new InitialContext();
-			userManager = (UserManager) ctx.lookup(JNDINames.USER_MANAGER);
-		} catch (NamingException e) {
-			throw new ServletException("Failed to lookup the UserManager EJB",
-					e);
-		}
-		User currentUser = null;
-		try {
-			currentUser = userManager.getUser(username);
-		} catch (UserManagementException e) {
-			//if there is no user for this username thewn return the current
-			//user - which should be guest
-			currentUser = (User) session.getAttribute("currentUser");
-		}
-		currentUser.authenticate(password);
-		String redirectURL = "";
-		if (currentUser.isAuthenticated()) {
-			session.setAttribute("currentUser", currentUser);
-		} else {
-			LOG.info("Invalid username or password");
+		String viewURL = "/WEB-INF/jsp/login.jsp";
+		
+		if (username == null && password == null) {
+			//do nothing - just display the form
+		} else if (username == null || password == null) {
 			request.setAttribute("errorText", "Invalid username or password");
-			redirectURL = "/openchurch/?action=login";
+		} else {
+			UserManager userManager;
+			try {
+				InitialContext ctx = new InitialContext();
+				userManager = (UserManager) ctx
+						.lookup(JNDINames.USER_MANAGER);
+			} catch (NamingException e) {
+				throw new ServletException(
+						"Failed to lookup the UserManager EJB", e);
+			}
+			User currentUser;
+			try {
+				currentUser = userManager.getUser(username);
+			} catch (UserManagementException e) {
+				//Should return the guest user
+				currentUser = (User) session.getAttribute("currentUser");
+			}
+			currentUser.authenticate(password);
+			if (currentUser.isAuthenticated()) {
+				session.setAttribute("currentUser", currentUser);
+				response.sendRedirect("/openchurch/");
+				return;
+			} else {
+				request.setAttribute("errorText", "Invalid username or password");
+			}
 		}
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher(redirectURL);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewURL);
 		dispatcher.forward(request, response);
 	}
 	

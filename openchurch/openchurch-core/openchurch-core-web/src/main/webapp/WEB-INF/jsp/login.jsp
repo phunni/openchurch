@@ -9,12 +9,12 @@
 <title>Open Church</title>
 </head>
 <body>
- <c:if test="${errorText}">
+ <c:if test="${not empty errorText}">
  	<p>
  		${errorText }
  	</p>
  </c:if>	
- <form method="post" action="/openchurch/?page=login">
+ <form method="post" action="/openchurch/Login">
  	username: <input type="text" name="username" /><br />
  	password: <input type="password" name="password" /> <br />
  	<input type="submit" name="Login" />

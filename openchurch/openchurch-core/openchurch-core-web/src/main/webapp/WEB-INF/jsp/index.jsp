@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:if test="${currentUser.username == 'guest'}">
-	Please <a href="/openchurch/?action=login">login</a>.
+	Please <a href="/openchurch/Login">login</a>.
 	<hr />
 </c:if>
  Welcome ${currentUser.preferredNames } ${currentUser.surname }!
