@@ -5,10 +5,15 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+
+import uk.co.monkeypower.openchurch.core.layout.entities.Menu;
 
 /**
  * The Class Role. Represents a role in the site - such as an admin, member etc.
@@ -25,6 +30,9 @@ public class Role {
     private String title;
     @ManyToMany(mappedBy="roles")
     private List<User> users;
+    @OneToMany
+    @JoinTable(name="openchurch_role_menus", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
+    private List<Menu> menus;
     
     /**
      * Gets the id.
@@ -113,7 +121,13 @@ public class Role {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-    
-    
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 
 }

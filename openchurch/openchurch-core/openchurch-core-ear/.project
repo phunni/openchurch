@@ -6,6 +6,7 @@
 		<project>openchurch-core-web</project>
 		<project>openchurch-core-logic</project>
 		<project>openchurch-core-ear</project>
+		<project>openchurch-core-layout</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

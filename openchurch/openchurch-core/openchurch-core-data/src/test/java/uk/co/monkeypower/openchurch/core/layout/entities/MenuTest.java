@@ -27,7 +27,7 @@ public class MenuTest {
         } catch (IOException e) {
             System.out.println("Failed to locate properties file for datasource: " + e);
         }
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_layout_test", jdbcProperties);
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_users_test", jdbcProperties);
         manager = factory.createEntityManager();
 
     }

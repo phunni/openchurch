@@ -31,7 +31,6 @@
   <modules>
     <module>openchurch-core-data</module>
     <module>openchurch-core-logic</module>
-    <module>openchurch-core-layout</module>
     <module>openchurch-core-web</module>
     <module>openchurch-core-ear</module>  
   </modules>

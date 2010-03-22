@@ -97,11 +97,6 @@ public class UserManagerBean implements UserManager {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see uk.co.monkeypower.openchurch.core.users.beans.UserManager#isAdmin()
-	 */
 	public boolean isAdmin() {
 		for (Role currentRole : user.getRoles()) {
 			if (currentRole.getTitle().equals("admin")) {

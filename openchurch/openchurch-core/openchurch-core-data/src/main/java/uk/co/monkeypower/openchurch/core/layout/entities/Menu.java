@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import uk.co.monkeypower.openchurch.core.users.entities.Role;
+
 @Entity
 @Table(name="openchurch_menus")
 public class Menu {

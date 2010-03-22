@@ -83,6 +83,13 @@ create table openchurch_user_roles (
     child bigint not null
 );
 
+create table openchurch_role_menus (
+    parent bigint not null,
+    child bigint not null
+);
+
+insert into openchurch_role_menus values(0, 0);
+
 insert into openchurch_user_roles values (1,0);
 
 create table openchurch_content_modules (
@@ -119,6 +126,8 @@ create table openchurch_menus (
      id bigint primary key,
     name varchar(500) not null
 );
+
+insert into openchurch_menus values('0', 'Admin');
 
 create table openchurch_menu_menuitems (
     parent bigint not null,

@@ -34,5 +34,11 @@
         <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jdom/jdom/1.1/jdom-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/uk/co/monkeypower/openchurch/openchurch-core-layout/0.1/openchurch-core-layout-0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
 </wb-module>
 </project-modules>

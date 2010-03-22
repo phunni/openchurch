@@ -1,6 +1,8 @@
 package uk.co.monkeypower.openchurch.core.layout.entities;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.persistence.EntityManager;
@@ -12,8 +14,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class MenuItemTest {
 
+
+public class PageTest {
+    
     private static EntityManager manager;
 
     @BeforeClass
@@ -24,38 +28,39 @@ public class MenuItemTest {
         } catch (IOException e) {
             System.out.println("Failed to locate properties file for datasource: " + e);
         }
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_layout_test", jdbcProperties);
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("openchurch_users_test", jdbcProperties);
         manager = factory.createEntityManager();
 
     }
-
+    
     @Test
-    public void createMenuItem() {
+    public void createPage() {
         try {
-            MenuItem item = new MenuItem();
-            item.setTitle("test menu item");
-            manager.getTransaction().begin();
-            manager.persist(item);
-            assertTrue(item.getId() != 0);
             Page page = new Page();
-            page.setTitle("test");
             page.setName("test");
-            item.setPage(page);
+            page.setTitle("test");
+            manager.getTransaction().begin();
             manager.persist(page);
-            manager.merge(item);
-            manager.flush();
+            assertTrue(page.getId() >=1);
+            List<ContentModule> modules = new ArrayList<ContentModule>();
+            ContentModule module = new ContentModule();
+            module.setModuleClassName("test");
+            module.setDeleteable(true);
+            manager.persist(module);
+            modules.add(module);
+            page.setModules(modules);
+            manager.merge(page);
+            manager.flush();  
         } finally {
             if(manager.getTransaction().isActive()){
                 manager.getTransaction().rollback();
             } 
         }
     }
-
     
-     @AfterClass 
-     public static void closeManager(){ 
-         manager.close(); 
-     }
-    
+    @AfterClass 
+    public static void closeManager(){ 
+        manager.close(); 
+    }
 
 }
