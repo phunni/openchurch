@@ -43,6 +43,11 @@
      	<artifactId>persistence-api</artifactId>
      	<version>1.0b</version>
      	<scope>compile</scope>
+     </dependency>
+     <dependency>
+     	<groupId>uk.co.monkeypower.openchurch</groupId>
+     	<artifactId>openchurch-core-layout</artifactId>
+     	<version>0.1</version>
      </dependency>    
   </dependencies>
   <reporting>

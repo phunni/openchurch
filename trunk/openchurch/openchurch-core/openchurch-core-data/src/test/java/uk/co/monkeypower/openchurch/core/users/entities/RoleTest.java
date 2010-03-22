@@ -18,6 +18,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.co.monkeypower.openchurch.core.layout.entities.Menu;
+
 
 
 public class RoleTest {
@@ -53,6 +55,17 @@ public class RoleTest {
 	Query locateTestRole = manager.createQuery("select r from Role r where r.title = 'test'");
 	Role testRole = (Role)locateTestRole.getSingleResult();
 	assertNotNull("There should be one test role", testRole);
+    }
+    
+    @Test
+    public void checkMenus() {
+    	EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
+		Query locateAdminRole = manager
+				.createQuery("select r from Role r where r.title = 'admin'");
+		Role adminRole = (Role)locateAdminRole.getSingleResult();
+		assertNotNull(adminRole);
+		List<Menu> menus = adminRole.getMenus();
+		assertTrue(menus.size() >= 1);
     }
     
     @Test
