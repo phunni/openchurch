@@ -115,6 +115,8 @@ create table openchurch_pages (
     title varchar(500) not null
 );
 
+insert into openchurch_pages values(0, 'System Properties', 'System Properties');
+
 create index idx_openchurch_pages on openchurch_pages(id);
 
 create table openchurch_page_modules (
@@ -124,13 +126,17 @@ create table openchurch_page_modules (
 
 create table openchurch_menus (
      id bigint primary key,
-    name varchar(500) not null
+     name varchar(500) not null,
+     priority bigint not null
 );
 
-insert into openchurch_menus values('0', 'Admin');
+insert into openchurch_menus values(0, 'Admin', 1000);
+insert into openchurch_menu_items values(0, 'System Properties', 0); 
 
 create table openchurch_menu_menuitems (
     parent bigint not null,
     child bigint not null
 );
+
+insert into openchurch_menu_menuitems values(0, 0);
 

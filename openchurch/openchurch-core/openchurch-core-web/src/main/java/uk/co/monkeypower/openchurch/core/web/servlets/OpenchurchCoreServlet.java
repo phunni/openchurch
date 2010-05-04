@@ -2,6 +2,7 @@ package uk.co.monkeypower.openchurch.core.web.servlets;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.naming.InitialContext;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import uk.co.monkeypower.openchurch.core.layout.beans.LayoutManager;
+import uk.co.monkeypower.openchurch.core.layout.entities.Menu;
+import uk.co.monkeypower.openchurch.core.layout.entities.MenuItem;
+import uk.co.monkeypower.openchurch.core.layout.entities.Page;
 import uk.co.monkeypower.openchurch.core.users.beans.UserManager;
 import uk.co.monkeypower.openchurch.core.users.beans.exceptions.UserManagementException;
 import uk.co.monkeypower.openchurch.core.users.entities.User;
@@ -61,7 +66,41 @@ public class OpenchurchCoreServlet extends HttpServlet {
 		//Begin to create the model
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-		session.setAttribute("model", model);
+		//create the layout
+		LayoutManager layoutManager = null;
+		try {
+			InitialContext ctx = new InitialContext();
+			layoutManager = (LayoutManager) ctx.lookup(JNDINames.LAYOUT_MANAGER);
+		} catch (NamingException e) {
+			throw new ServletException("Failed to lookup the LayoutManager EJB",
+					e);
+		}
+		List<Menu> menus = layoutManager.getMenus(currentUser);
+		model.put("layout", menus);
+		
+		//The reason for the slightly inaccurate parameter name is simple
+		//obfuscation.
+		String pageID = request.getParameter("page");
+		Page page = null;
+		if (pageID != null) {
+			pageID = pageID.trim();
+			long menutItemID = Long.parseLong(pageID);
+			for (Menu currentMenu : menus) {
+				for (MenuItem currentMenuItem : currentMenu.getItems()) {
+					if (currentMenuItem.getId() == menutItemID){
+						page = currentMenuItem.getPage();
+					}
+				}
+			}
+			if (LOG.isDebugEnabled()){
+				LOG.debug("The current page is: " + page.getName());
+			}
+			model.put("page", page);
+		}
+		
+		//TODO: We can do this better, we probably don't need to recreate the 
+		//entire model every request.
+		request.setAttribute("model", model);
 		
 		//select the view
 		String action = request.getParameter("action");
