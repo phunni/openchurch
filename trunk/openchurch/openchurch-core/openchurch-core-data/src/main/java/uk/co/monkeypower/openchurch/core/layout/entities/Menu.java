@@ -11,8 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import uk.co.monkeypower.openchurch.core.users.entities.Role;
-
 @Entity
 @Table(name="openchurch_menus")
 public class Menu {
@@ -25,6 +23,7 @@ public class Menu {
     @ManyToMany()
     @JoinTable(name="openchurch_menu_menuitems", joinColumns=@JoinColumn(name="parent"), inverseJoinColumns=@JoinColumn(name="child"))
     private List<MenuItem> items;
+    private int priority;
     
     public long getId() {
         return id;
@@ -44,6 +43,12 @@ public class Menu {
     public void setItems(List<MenuItem> items) {
         this.items = items;
     }
+	public int getPriority() {
+		return priority;
+	}
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
     
     
 

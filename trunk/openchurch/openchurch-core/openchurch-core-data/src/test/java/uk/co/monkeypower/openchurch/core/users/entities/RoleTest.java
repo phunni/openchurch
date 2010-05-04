@@ -65,6 +65,7 @@ public class RoleTest {
 		Role adminRole = (Role)locateAdminRole.getSingleResult();
 		assertNotNull(adminRole);
 		List<Menu> menus = adminRole.getMenus();
+		assertFalse(menus.isEmpty());
 		assertTrue(menus.size() >= 1);
     }
     

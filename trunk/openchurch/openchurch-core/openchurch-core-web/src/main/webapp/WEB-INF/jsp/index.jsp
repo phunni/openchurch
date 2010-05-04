@@ -14,5 +14,22 @@
 	<hr />
 </c:if>
  Welcome ${currentUser.preferredNames } ${currentUser.surname }!
+ <div class="menubar">
+ 	<c:forEach items="${model.layout}" var="currentMenu">
+ 		${currentMenu.name}
+ 		<div class="menuItems">
+ 			<c:forEach items="${currentMenu.items}" var="currentMenuItem">
+ 			  <a href="/openchurch/?page=${currentMenuItem.id}" title="${currentMenuItem.title}">
+ 			  	${currentMenuItem.title}
+ 			  </a>
+ 			</c:forEach>
+ 		</div>
+ 	</c:forEach>
+ </div>
+ <c:if test="${not empty model.page}"> 
+ <div class="page">
+ 	${model.page.name}
+ </div>
+ </c:if>
 </body>
 </html>

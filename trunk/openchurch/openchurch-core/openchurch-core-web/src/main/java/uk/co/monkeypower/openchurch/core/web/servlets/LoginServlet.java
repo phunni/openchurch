@@ -72,6 +72,7 @@ public class LoginServlet extends HttpServlet {
 			currentUser.authenticate(password);
 			if (currentUser.isAuthenticated()) {
 				session.setAttribute("currentUser", currentUser);
+				userManager.setUser(currentUser);
 				response.sendRedirect("/openchurch/");
 				return;
 			} else {
