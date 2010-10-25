@@ -1,4 +1,4 @@
-toplink.jdbc.url=jdbc:mysql://localhost:3306/openchurch
-toplink.jdbc.user=openchurch
-toplink.jdbc.password=openchurch
-toplink.jdbc.driver=com.mysql.jdbc.Driver
+eclipselink.jdbc.url=jdbc:mysql://localhost:3306/openchurch
+eclipselink.jdbc.user=openchurch
+eclipselink.jdbc.password=openchurch
+eclipselink.jdbc.driver=com.mysql.jdbc.Driver
