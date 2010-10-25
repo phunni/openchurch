@@ -34,5 +34,11 @@
         <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="entity.jar" deploy-path="/" handle="module:/resource/openchurch-core-data/openchurch-core-data">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="/eclipselink-2.0.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/eclipselink/2.0.0/eclipselink-2.0.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
 </wb-module>
 </project-modules>

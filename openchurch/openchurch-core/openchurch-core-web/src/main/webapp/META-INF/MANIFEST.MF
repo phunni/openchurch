@@ -1,3 +1,8 @@
 Manifest-Version: 1.0
-Class-Path: 
+Class-Path: openchurch-core-logic-0.1.jar 
+ lib/jstl-1.2.jar 
+ lib/standard-1.1.2.jar 
+ lib/commons-logging-1.1.1.jar 
+ lib/log4j-1.2.14.jar 
+ lib/eclipselink-2.0.0.jar
 
