@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
     <persistence-unit name="openchurch_users">
-        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/openchurch</jta-data-source>
         <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>
@@ -17,7 +17,7 @@
     </properties>
     </persistence-unit>
     <persistence-unit name="openchurch_users_test">
-        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>uk.co.monkeypower.openchurch.core.users.entities.User</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Address</class>
         <class>uk.co.monkeypower.openchurch.core.users.entities.Role</class>
