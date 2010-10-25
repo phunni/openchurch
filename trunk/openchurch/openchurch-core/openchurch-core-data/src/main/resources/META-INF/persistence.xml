@@ -13,7 +13,7 @@
         <class>uk.co.monkeypower.openchurch.core.layout.entities.ContentModule</class>
         <class>uk.co.monkeypower.openchurch.core.layout.entities.Page</class>
         <properties>
-        <property name="toplink.logging.level" value="CONFIG"/>
+        <property name="eclipselink.logging.level" value="CONFIG"/>
     </properties>
     </persistence-unit>
     <persistence-unit name="openchurch_users_test">
@@ -26,7 +26,7 @@
         <class>uk.co.monkeypower.openchurch.core.layout.entities.ContentModule</class>
         <class>uk.co.monkeypower.openchurch.core.layout.entities.Page</class>
         <properties>
-        <property name="toplink.logging.level" value="FINEST"/>
+        <property name="eclipselink.logging.level" value="FINEST"/>
     </properties>
     </persistence-unit>
 </persistence>
