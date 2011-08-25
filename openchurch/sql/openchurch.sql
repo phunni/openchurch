@@ -1,7 +1,7 @@
 -- uncomment the following line if you want to destroy and re-create an 
 -- exisiting openchurch database...
 
-drop database openchurch;
+--drop database openchurch;
 
 create database openchurch DEFAULT CHARACTER  SET latin1 COLLATE latin1_bin;
 
