@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
 <wb-module deploy-name="openchurch-core-ear">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
 <wb-resource deploy-path="/" source-path="/src/main/application"/>
-        <dependent-module deploy-path="/" handle="module:/resource/openchurch-core-web/openchurch-core-web">
-            <dependent-object>WebModule_1242222375254</dependent-object>
+        <dependent-module archiveName="openchurch-core-logic-0.1.jar" deploy-path="/" handle="module:/resource/openchurch-core-logic/openchurch-core-logic">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/resource/openchurch-core-logic/openchurch-core-logic">
-            <dependent-object>EjbModule_1242222379022</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jasypt/jasypt/1.6/jasypt-1.6.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/taglibs/standard/1.1.2/standard-1.1.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.1/commons-codec-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/icu/icu4j/4.0.1/icu4j-4.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar">
+        <dependent-module archiveName="openchurch-core-web-0.1.war" deploy-path="/" handle="module:/resource/openchurch-core-web/openchurch-core-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="entity.jar" deploy-path="/" handle="module:/resource/openchurch-core-data/openchurch-core-data">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="/eclipselink-2.0.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/eclipselink/2.0.0/eclipselink-2.0.0.jar">
+        <dependent-module archiveName="openchurch-core-logic-0.1-client.jar" deploy-path="/lib/" handle="module:/resource/openchurch-core-logic/openchurch-core-logic">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl-1.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="standard-1.1.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/taglibs/standard/1.1.2/standard-1.1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j-1.2.14.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="icu4j-4.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/icu/icu4j/4.0.1/icu4j-4.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jasypt-1.6.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jasypt/jasypt/1.6/jasypt-1.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang-2.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.1/commons-codec-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="eclipselink-2.0.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/eclipselink/2.0.0/eclipselink-2.0.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
 </wb-module>
