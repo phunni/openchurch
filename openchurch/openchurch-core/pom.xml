@@ -7,11 +7,9 @@
     <relativePath>..</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>uk.co.monkeypower.openchurch</groupId>
   <artifactId>openchurch-core</artifactId>
   <packaging>pom</packaging>
   <name>openchurch-core</name>
-  <version>0.1</version>
   <url>http://code.google.com/p/openchurch/</url>
   <build>
   	<plugins>
@@ -32,7 +30,8 @@
     <module>openchurch-core-data</module>
     <module>openchurch-core-logic</module>
     <module>openchurch-core-web</module>
-    <module>openchurch-core-ear</module>  
+    <module>openchurch-core-ear</module>
+    <module>openchurch-core-webmodule</module>
   </modules>
   <dependencies>
   	<dependency>
@@ -81,5 +80,10 @@
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>servlet-api</artifactId>
+  		<version>2.5</version>
+  	</dependency>
   </dependencies>
 </project>

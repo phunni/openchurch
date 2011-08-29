@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
   <parent>
     <artifactId>openchurch-core</artifactId>
     <groupId>uk.co.monkeypower.openchurch</groupId>
     <version>0.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>uk.co.monkeypower.openchurch</groupId>
   <artifactId>openchurch-core-web</artifactId>
   <packaging>war</packaging>
   <name>openchurch-core-web</name>
-  <version>0.1</version>
   <url>http://code.google.com/p/openchurch/</url>
 
   <build>
@@ -32,12 +31,6 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.4</version>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>javax.ejb</groupId>
       <artifactId>ejb-api</artifactId>

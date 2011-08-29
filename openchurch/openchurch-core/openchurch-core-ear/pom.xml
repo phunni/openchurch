@@ -6,10 +6,8 @@
         <groupId>uk.co.monkeypower.openchurch</groupId>
         <version>0.1</version>
     </parent>
-  <groupId>uk.co.monkeypower.openchurch</groupId>
   <artifactId>openchurch-core-ear</artifactId>
   <packaging>ear</packaging>
-  <version>0.1</version>
   <name>openchurch-core-ear</name>
   <url>http://code.google.com/p/openchurch/</url>
 
