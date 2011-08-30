@@ -31,7 +31,7 @@
     <module>openchurch-core-logic</module>
     <module>openchurch-core-web</module>
     <module>openchurch-core-ear</module>
-    <module>openchurch-core-webmodule</module>
+    <module>openchurch-core-openportal</module>
   </modules>
   <dependencies>
   	<dependency>
