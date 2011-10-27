@@ -36,7 +36,13 @@
         <dependent-module archiveName="commons-codec-1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.1/commons-codec-1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="commons-logging-api-1.0.4.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging-api/1.0.4/commons-logging-api-1.0.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="servlet-api-2.5.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="pluto-taglib-1.1.7.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/pluto/pluto-taglib/1.1.7/pluto-taglib-1.1.7.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
