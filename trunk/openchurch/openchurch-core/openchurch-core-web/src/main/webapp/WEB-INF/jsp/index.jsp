@@ -9,10 +9,15 @@
 <title>Open Church</title>
 </head>
 <body>
-<c:if test="${currentUser.username == 'guest'}">
-	Please <a href="/openchurch/Login">login</a>.
-	<hr />
-</c:if>
+<c:choose>
+	<c:when test="${currentUser.username == 'guest'}">
+		Please <a href="/openchurch/Login">login</a>.
+	</c:when>
+	<c:otherwise>
+		<a href="/openchurch/?command=logout">Logout</a>
+	</c:otherwise>
+</c:choose>
+<hr />
  Welcome ${currentUser.preferredNames } ${currentUser.surname }!
  <div class="menubar">
  	<c:forEach items="${model.layout}" var="currentMenu">

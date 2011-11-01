@@ -43,6 +43,19 @@ public class OpenchurchCoreServlet extends HttpServlet {
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("doPost in the core servlet");
 		}
+		HttpSession session = request.getSession();
+		String command = request.getParameter("command");
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Command is: " + command);
+		}
+		if ("logout".equals(command)) {
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("Logging the user out.");
+			}
+			
+			session.invalidate();
+			session = request.getSession();
+		}
 		UserManager userManager = null;
 		try {
 			InitialContext ctx = new InitialContext();
@@ -51,7 +64,6 @@ public class OpenchurchCoreServlet extends HttpServlet {
 			throw new ServletException("Failed to lookup the UserManager EJB",
 					e);
 		}
-		HttpSession session = request.getSession();
 		User currentUser = (User) session.getAttribute("currentUser"); 
 		if (currentUser == null) {
 			try {

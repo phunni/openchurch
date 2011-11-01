@@ -2,10 +2,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee     
  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<display-name>Archetype Created Web Application</display-name>
-	<listener>
-		<listener-class>org.apache.pluto.driver.PortalStartupListener</listener-class>
-	</listener>
 	<servlet>
 		<servlet-name>CoreServlet</servlet-name>
 		<servlet-class>uk.co.monkeypower.openchurch.core.web.servlets.OpenchurchCoreServlet</servlet-class>
