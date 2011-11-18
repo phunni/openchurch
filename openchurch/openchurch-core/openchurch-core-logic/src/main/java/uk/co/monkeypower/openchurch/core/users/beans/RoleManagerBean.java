@@ -31,9 +31,11 @@ public class RoleManagerBean implements RoleManager {
     /* (non-Javadoc)
      * @see uk.co.monkeypower.openchurch.core.users.beans.RoleManager#getAllRoles()
      */
-    public List<Role> getAllRoles() {
+    @SuppressWarnings("unchecked")
+	public List<Role> getAllRoles() {
 	Query getAllRolesQuery = entityManager.createQuery("select r from Role r");
-	return getAllRolesQuery.getResultList();
+	List<Role> resultList = getAllRolesQuery.getResultList();
+	return resultList;
     }
 
 
