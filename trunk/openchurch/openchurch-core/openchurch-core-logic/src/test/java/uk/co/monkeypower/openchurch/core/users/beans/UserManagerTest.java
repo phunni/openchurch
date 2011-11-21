@@ -7,6 +7,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.embeddable.EJBContainer;
+import javax.naming.Context;
+import javax.naming.NamingException;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import uk.co.monkeypower.openchurch.core.users.entities.Role;
@@ -14,9 +20,28 @@ import uk.co.monkeypower.openchurch.core.users.entities.User;
 
 public class UserManagerTest {
 
+	private static EJBContainer ejbContainer;
+	private static Context ctx;
+
+	@BeforeClass
+	public static void setUp() {
+		ejbContainer = EJBContainer.createEJBContainer();
+		ctx = ejbContainer.getContext();
+	}
+
+	@AfterClass
+	public static void tearDown() {
+		ejbContainer.close();
+	}
+	
 	@Test
 	public void setUser() {
-		UserManagerBean manager = new UserManagerBean();
+		UserManager manager = null;
+		try {
+			manager = (UserManager) ctx.lookup("java:global/classes/UserManagerBean!uk.co.monkeypower.openchurch.core.users.beans.UserManager");
+		} catch (NamingException e) {
+			System.out.println("Failed to lookup the gosh darned bean!");
+		}
 		assertNotNull(manager);
 		User user = new User();
 		user.setUsername("test-user");
@@ -27,7 +52,12 @@ public class UserManagerTest {
 
 	@Test
 	public void findOutIfAdmin() {
-		UserManagerBean manager = new UserManagerBean();
+		UserManager manager = null;
+		try {
+			manager = (UserManager) ctx.lookup("java:global/classes/UserManagerBean!uk.co.monkeypower.openchurch.core.users.beans.UserManager");
+		} catch (NamingException e) {
+			System.out.println("Failed to lookup the gosh darned bean!");
+		}
 		assertNotNull(manager);
 		User user = new User();
 		user.setUsername("test-user");
