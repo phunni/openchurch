@@ -20,9 +20,14 @@ import org.apache.pluto.container.driver.PortletRegistryService;
 
 public class OpenChurchPortletDriverServices implements PortalDriverServices {
 
+	private PortalContext portalContext;
+	
+	public void setPortalContext(PortalContext portalContext) {
+		this.portalContext = portalContext;
+	}
+
 	public PortalContext getPortalContext() {
-		// TODO Auto-generated method stub
-		return null;
+		return portalContext;
 	}
 
 	public EventCoordinationService getEventCoordinationService() {
