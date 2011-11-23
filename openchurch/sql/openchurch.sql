@@ -146,3 +146,10 @@ create table openchurch_properties (
 	property_value LONG VARCHAR
 );
 
+create table openchurch_portal_properties (
+	id bigint primary key,
+	name varchar(500),
+	property_value LONG VARCHAR
+);
+
+
