@@ -1,7 +1,7 @@
 -- uncomment the following line if you want to destroy and re-create an 
 -- exisiting openchurch database...
 
---drop database openchurch;
+drop database openchurch;
 
 create database openchurch DEFAULT CHARACTER  SET latin1 COLLATE latin1_bin;
 
@@ -139,4 +139,10 @@ create table openchurch_menu_menuitems (
 );
 
 insert into openchurch_menu_menuitems values(0, 0);
+
+create table openchurch_properties (
+	id bigint primary key,
+	name varchar(500),
+	property_value LONG VARCHAR
+);
 
