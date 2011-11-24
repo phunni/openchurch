@@ -142,13 +142,13 @@ insert into openchurch_menu_menuitems values(0, 0);
 
 create table openchurch_properties (
 	id bigint primary key,
-	name varchar(500),
+	name varchar(500) unique,
 	property_value LONG VARCHAR
 );
 
 create table openchurch_portal_properties (
 	id bigint primary key,
-	name varchar(500),
+	name varchar(500) unique,
 	property_value LONG VARCHAR
 );
 
