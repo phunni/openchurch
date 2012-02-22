@@ -90,7 +90,7 @@
         <artifactId>maven-ear-plugin</artifactId>
         <configuration>
           <defaultJavaBundleDir>lib/</defaultJavaBundleDir>
-          <ejbVersion>3.0</ejbVersion>
+          <ejbVersion>3.1</ejbVersion>
           <modules>
              <ejbModule>
                 <groupId>uk.co.monkeypower.openchurch</groupId>
