@@ -166,6 +166,7 @@ public class UserTest {
 		assertNotNull(user);
 	}
 
+	@SuppressWarnings("unchecked")
 	@After
 	public void cleanUp(){
 		EntityManager manager = Persistence.createEntityManagerFactory("openchurch_users_test").createEntityManager();
