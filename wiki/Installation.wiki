@@ -8,8 +8,8 @@ It should be noted that, at this stage, OpenChurch is still in the very early st
 In order to successfully install OpenChurch, you will require the following:
     * Java 1.5 or above
     * Maven
-    * A J2EE server such as glassfish or JBoss
-    * A SQL compliant database such as Oracle, MySQL or MS SQL Server
+    * A J2EE server such as Glassfish or JBoss *It should be noted that OpenChurch has only been tested on Glassfish*
+    * A SQL compliant database such as Oracle, MySQL or MS SQL Server *It should be noted that OpenChurch has only been tested on MySQL*
 
 
 
